@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+window.__resources = {
+  "https://unpkg.com/react@18.3.1/umd/react.production.min.js": "./vendor/react.production.min.js",
+  "https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js": "./vendor/react-dom.production.min.js",
+  "https://unpkg.com/@babel/standalone@7.29.0/babel.min.js": "./vendor/babel.min.js"
+};
+</script>
+<script src="./support.js"></script>
+</head>
+<body>
+<template id="__bundler_thumbnail">
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <rect width="100" height="100" fill="#EAEEFE"/>
+  <text x="50" y="50" text-anchor="middle" dominant-baseline="central" font-family="'IBM Plex Mono', monospace" font-size="26" fill="#1f1f1f">MR</text>
+</svg>
+</template>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;1,400&amp;display=swap" rel="stylesheet">
+<style>
+  :root { --display: 64px; --pad: 32px; }
+  @media (max-width: 1200px) { :root { --display: 60px; --pad: 48px; } }
+  @media (max-width: 900px) { :root { --display: 48px; --pad: 40px; } }
+  @media (max-width: 600px) { :root { --display: 36px; --pad: 24px; } }
+  body { margin: 0; background: #ffffff; color: #1f1f1f; -webkit-font-smoothing: antialiased; }
+  @media (max-width: 900px) { [data-stats-row] { display: flex !important; flex-direction: column !important; align-items: center !important; gap: 32px !important; text-align: center !important; } [data-stats-center] { display: flex !important; flex-direction: column !important; align-items: center !important; gap: 32px !important; text-align: center !important; } }
+  @media (min-width: 1800px) { [data-overlay-scroll] { font-size: 100%; } }
+  [data-reveal] { transition: opacity 600ms cubic-bezier(0.16,1,0.3,1), transform 600ms cubic-bezier(0.16,1,0.3,1); }
+  [data-reveal-live] [data-reveal][data-reveal-pending] { opacity: 0; transform: translateY(24px); }
+  [data-reveal].is-in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { [data-reveal][data-reveal-pending] { opacity: 1 !important; transform: none !important; transition: none !important; } }
+  @media (max-width: 900px) { [data-about-p1], [data-about-p2] { margin-bottom: 24px !important; } }
+  @media (max-width: 900px) { [data-footer-row] { grid-template-columns: 1fr !important; gap: 32px !important; text-align: center; justify-items: center !important; } }
+  @media (max-width: 600px) { [data-pinned-links] { right: 16px !important; bottom: 16px !important; } }
+  @media (max-width: 1200px) { [data-cs-col] { max-width: none !important; } }
+  @media (max-width: 900px) { [data-pair] { grid-template-columns: 1fr !important; gap: 24px !important; } [data-cols3] { grid-template-columns: 1fr !important; gap: 32px !important; } }
+  @media (max-width: 600px) { [data-toggle] { height: 50px !important; padding: 3px !important; } [data-toggle] > div { top: 3px !important; left: 3px !important; right: 3px !important; bottom: 3px !important; width: calc(50% - 3px) !important; } [data-toggle] > button { height: 44px !important; min-width: 72px !important; padding: 0 16px !important; } }
+  @media (max-width: 600px) { [data-ruled-row] { padding: 16px 0 !important; } }
+  @media (max-width: 900px) { [data-finding-row], [data-figure-row] { grid-template-columns: 1fr !important; gap: 8px !important; } [data-tile] { flex-basis: calc((100% - 24px) / 2) !important; } }
+  @media (max-width: 600px) { [data-tile] { flex-basis: 100% !important; min-height: 80px !important; } }
+  /* match Work's toggle-to-content gap to About's */
+  html.overlay-open, body.overlay-open { overscroll-behavior: none; overscroll-behavior-y: none; }
+  @keyframes scroll-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
+  @keyframes sheet-in { from { transform: translateY(100%); } to { transform: translateY(0); } }
+  @keyframes dim-in { from { opacity: 0; } to { opacity: 1; } }
+  @media (prefers-reduced-motion: reduce) { [data-overlay-scroll], [data-overlay-dim] { animation: none !important; } }
+  @keyframes maya-breath { 0%, 100% { opacity: 1; } 50% { opacity: 0.55; } }
+  h1, h2, h3, h4 { font-weight: 400; }
+  a { color: inherit; text-decoration: none; }
+  a:hover { color: #1f1f1f; }
+</style>
+<script data-loop-guard="">
+(function () {
+  function keepLooping() {
+    document.querySelectorAll('video').forEach(function (v) {
+      v.loop = true;
+      v.muted = true;
+      v.defaultMuted = true;
+      if (v.dataset.loopBound) return;
+      v.dataset.loopBound = '1';
+      var replay = function () { v.play().catch(function () {}); };
+      v.addEventListener('ended', function () { v.currentTime = 0; replay(); });
+      v.addEventListener('pause', function () { if (!v.ended && !document.hidden) replay(); });
+      replay();
+    });
+  }
+  document.addEventListener('visibilitychange', function () { if (!document.hidden) keepLooping(); });
+  setInterval(keepLooping, 1000);
+  keepLooping();
+})();
+</script>
+</helmet>
+<div style="min-height: 100vh; background: #ffffff; color: #1f1f1f; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: -0.03em;">
+  <div style="position: fixed; top: 24px; left: 0; right: 0; z-index: 40; display: flex; justify-content: center; pointer-events: none;">
+    <div data-toggle="" style="position: relative; box-sizing: border-box; display: flex; align-items: center; height: 50px; padding: 3px; border-radius: 999px; background: rgba(255,255,255,0.9); background: rgba(255,255,255,0.55); -webkit-backdrop-filter: blur(20px) saturate(180%); backdrop-filter: blur(20px) saturate(180%); border: 1px solid rgba(255,255,255,0.4); box-shadow: inset 0 1px 0 rgba(255,255,255,0.7), 0 4px 24px rgba(0,0,0,0.08); pointer-events: auto;">
+      <div style="{{ pillStyle }}"></div>
+      <button onClick="{{ showAbout }}" style="{{ aboutTabStyle }}">About</button>
+      <button onClick="{{ showWork }}" style="{{ workTabStyle }}">Work</button>
+    </div>
+  </div>
+
+  <sc-if value="{{ isAbout }}" hint-placeholder-val="{{ true }}">
+    <div style="display: flex; flex-direction: column; padding: 190px var(--pad) 72px; max-width: 1100px; margin: 0 auto;">
+      <div style="display: flex; flex-direction: column; align-items: center; padding: 0 0 96px; text-align: center;">
+        <p data-about-p1="" style="margin: 0 0 32px; font-size: var(--display); line-height: 1.05; letter-spacing: -0.05em; text-wrap: pretty;">
+          Hi, I'm <span onMouseEnter="{{ nameEnter }}" onMouseLeave="{{ nameLeave }}" style="color: #FE4EDC; animation: maya-breath 4s ease-in-out infinite; cursor: default;">Maya</span>! Thanks for stopping by.
+        </p>
+        <p data-about-p2="" style="margin: 0 0 32px; font-size: var(--display); line-height: 1.05; letter-spacing: -0.05em; text-wrap: pretty;">
+          I'm a <span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-weight: 400; font-style: italic; letter-spacing: -0.09em;">Senior UX Designer</span> at FICO, where I build and scale our design system across 7+ digital properties. I also own our event design infrastructure, building end-to-end experiences for internal and external events.
+        </p>
+        <p style="margin: 0; font-size: var(--display); line-height: 1.05; letter-spacing: -0.05em; text-wrap: pretty;">
+          Outside of work, I love fashion history, eating sour candy, and collecting trinkets.
+        </p>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isWork }}" hint-placeholder-val="{{ false }}">
+    <div data-work-list="" style="max-width: 1100px; margin: 0 auto; padding: 190px var(--pad) 72px;">
+      <sc-for list="{{ projects }}" as="p" hint-placeholder-count="4">
+        <div style="margin-bottom: 96px;">
+          <a href="{{ p.href }}" target="{{ p.target }}" rel="{{ p.rel }}" onClick="{{ p.onClick }}" style="{{ p.rowStyle }}">
+            <span style="display: inline-block; min-width: 1.5em;">{{ p.num }}</span>{{ p.title }}
+          </a>
+          <div style="{{ p.inlineThumbStyle }}"></div>
+        </div>
+      </sc-for>
+    </div>
+  </sc-if>
+
+  <div style="max-width: 1100px; margin: 0 auto; padding: 0 var(--pad) 96px;">
+    <div style="height: 1px; background: #d0d6da; width: 100%;"></div>
+    <div data-footer-row="" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); justify-items: start; gap: 32px; padding-top: 32px;">
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.02em; text-transform: uppercase; line-height: 1.5; color: #1f1f1f;">Contact</span>
+        <a href="mailto:mayarai0207@gmail.com" style="font-size: 20px; line-height: 1.6; letter-spacing: -0.02em; color: #1f1f1f; text-decoration: underline; text-underline-offset: 3px; width: fit-content;">Get in touch</a>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.02em; text-transform: uppercase; line-height: 1.5; color: #1f1f1f;">Location</span>
+        <span style="font-size: 20px; line-height: 1.6; letter-spacing: -0.02em; color: #1f1f1f;">New York, NY</span>
+      </div>
+    </div>
+  </div>
+
+  <div data-pinned-wrap="" style="position: fixed; left: 0; right: 0; bottom: 0; z-index: 30;">
+  <div data-pinned-links="" style="{{ pinnedStyle }}">
+    <span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.02em; text-transform: uppercase; line-height: 1.5; color: #1f1f1f;">Last updated: 30 - 07 - 2026</span>
+    <span style="display: flex; gap: 32px;">
+      <a href="https://drive.google.com/file/d/1_W1uiU0iS-QZjMz1Y_wXHbp0jJS0E5qL/view" target="_blank" rel="noopener noreferrer" style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.02em; text-transform: uppercase; line-height: 1.5; color: #1f1f1f; transition: color 200ms ease;" style-hover="color: #878B8E;">Resume</a>
+      <a href="https://www.linkedin.com/in/maya-rai-0207/" target="_blank" rel="noopener noreferrer" style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.02em; text-transform: uppercase; line-height: 1.5; color: #1f1f1f; transition: color 200ms ease;" style-hover="color: #878B8E;">LinkedIn</a>
+    </span>
+  </div>
+  </div>
+
+    </div>
+  
+
+  <sc-if value="{{ hoverCapable }}" hint-placeholder-val="{{ false }}">
+    <div style="{{ portraitStyle }}">
+      <img src="uploads/IMG_1124.PNG" alt="Maya" style="display: block; width: 240px; height: 240px; object-fit: cover; object-position: center 30%; border-radius: 8px; box-shadow: 0 18px 44px rgba(31,31,31,0.18);">
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isWeatherOverlay }}" hint-placeholder-val="{{ false }}">
+    <div data-overlay-dim="" style="{{ backdropStyle }}"></div>
+    <div style="{{ sheetUnderlayStyle }}"></div>
+    <div data-overlay-scroll="" style="{{ sheetStyle }}">
+      <div style="position: sticky; top: 24px; height: 0; z-index: 80;">
+        <button onClick="{{ closeOverlay }}" aria-label="Close" style="position: absolute; right: 24px; top: 0; z-index: 80; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border-radius: 999px; color: #1f1f1f; font-family: inherit; font-size: 16px; line-height: 1; cursor: pointer; background: rgba(255,255,255,0.9); background: rgba(255,255,255,0.55); -webkit-backdrop-filter: blur(20px) saturate(180%); backdrop-filter: blur(20px) saturate(180%); border: 1px solid rgba(255,255,255,0.4); box-shadow: inset 0 1px 0 rgba(255,255,255,0.7), 0 4px 24px rgba(0,0,0,0.08);">✕</button>
+      </div>
+      <section style="background: #728198; color: #ffffff; padding: 96px var(--pad); box-sizing: border-box; min-height: calc(100vh - 32px); display: flex; align-items: center; justify-content: center;">
+        <div style="max-width: 1100px; margin: 0 auto; width: 100%;">
+          <p style="margin: 0; font-size: var(--display); line-height: 1.05; letter-spacing: -0.05em; text-align: center; text-wrap: pretty;">A side project that&nbsp;<span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-weight: 400; font-style: italic; letter-spacing: -0.09em;">combines</span>&nbsp;two of my interests: fashion and moodboarding.</p>
+          <p style="margin: 32px auto 0; max-width: 900px; text-align: center; font-size: clamp(16px, 1.5vw, 20px); line-height: 1.7; letter-spacing: -0.02em; text-wrap: pretty;">Type in any city and get an archival runway look matched to the weather outside. It was a fun exercise digging through runway archives and hand-selecting looks based on texture, color, and silhouette. Designed, coded, and deployed with Claude Code, vanilla JS, and the Open-Meteo API.</p>
+          <div style="display: flex; justify-content: center; margin-top: 48px;">
+            <a href="https://weather-fashion.vercel.app" target="_blank" rel="noopener noreferrer" style="font-family: 'IBM Plex Mono', ui-monospace, monospace; display: inline-flex; align-items: center; height: 48px; padding: 0 24px; border-radius: 999px; background: #ffffff; color: #1f1f1f; font-size: 12px; font-weight: 400; letter-spacing: 0.02em; text-transform: uppercase; line-height: 1.5; cursor: pointer; transition: opacity 200ms ease;" style-hover="opacity: 0.85;">weather-fashion.vercel.app</a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isShippedOverlay }}" hint-placeholder-val="{{ false }}">
+    <div data-overlay-dim="" style="{{ backdropStyle }}"></div>
+    <div style="{{ sheetUnderlayStyle }}"></div>
+    <div data-overlay-scroll="" style="{{ sheetStyle }}">
+      <div style="position: sticky; top: 24px; height: 0; z-index: 80;">
+        <button onClick="{{ closeOverlay }}" aria-label="Close" style="position: absolute; right: 24px; top: 0; z-index: 80; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border-radius: 999px; color: #1f1f1f; font-family: inherit; font-size: 16px; line-height: 1; cursor: pointer; background: rgba(255,255,255,0.9); background: rgba(255,255,255,0.55); -webkit-backdrop-filter: blur(20px) saturate(180%); backdrop-filter: blur(20px) saturate(180%); border: 1px solid rgba(255,255,255,0.4); box-shadow: inset 0 1px 0 rgba(255,255,255,0.7), 0 4px 24px rgba(0,0,0,0.08);">✕</button>
+      </div>
+      <sc-if value="{{ isShippedLocked }}" hint-placeholder-val="{{ false }}">
+      <section style="background: #DEF6FB; color: #1f1f1f; padding: 96px var(--pad); box-sizing: border-box; min-height: calc(100vh - 32px); display: flex; flex-direction: column; align-items: center; justify-content: center;">
+        <div style="max-width: 900px; margin: 0 auto; width: 100%; text-align: center;">
+          <p style="margin: 0 0 48px; font-size: clamp(16px, 1.5vw, 20px); line-height: 1.7; letter-spacing: -0.02em; text-wrap: pretty;">This work is password protected</p>
+          <div style="display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; align-items: center;">
+            <input type="password" value="{{ pwValue }}" onChange="{{ onPwChange }}" onKeyDown="{{ onPwKey }}" placeholder="PASSWORD" aria-label="Password" style="font-family: 'IBM Plex Mono', ui-monospace, monospace; height: 48px; padding: 0 20px; border: 1px solid #1f1f1f; border-radius: 999px; background: transparent; color: #1f1f1f; font-size: 12px; letter-spacing: 0.02em; line-height: 1.5; outline: none; min-width: 220px;">
+            <button onClick="{{ onPwSubmit }}" style="font-family: 'IBM Plex Mono', ui-monospace, monospace; display: inline-flex; align-items: center; height: 48px; padding: 0 24px; border: none; border-radius: 999px; background: #1f1f1f; color: #ffffff; font-size: 12px; letter-spacing: 0.02em; text-transform: uppercase; line-height: 1.5; cursor: pointer;">Enter</button>
+          </div>
+          <sc-if value="{{ pwError }}" hint-placeholder-val="{{ false }}">
+            <p style="margin: 24px 0 0; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.02em; text-transform: uppercase; line-height: 1.5; color: #1f1f1f;">Incorrect password</p>
+          </sc-if>
+        </div>
+      </section>
+      </sc-if>
+      <sc-if value="{{ isShippedUnlocked }}" hint-placeholder-val="{{ true }}">
+      <section style="background: #DEF6FB; color: #1f1f1f; padding: 96px var(--pad); box-sizing: border-box; min-height: calc(100vh - 32px); display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative;">
+        <div style="max-width: 1100px; margin: 0 auto; width: 100%;">
+          <p style="margin: 0; font-size: var(--display); line-height: 1.05; letter-spacing: -0.05em; text-align: center; text-wrap: pretty;">A collection of pages and experiences I <span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-weight: 400; font-style: italic; letter-spacing: -0.06em;">designed</span> and <span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-weight: 400; font-style: italic; letter-spacing: -0.06em;">launched</span> across FICO's digital properties.</p>
+          <div onClick="{{ scrollToContent }}" style="margin-top: 96px; display: flex; justify-content: center; cursor: pointer; animation: scroll-bob 2.4s ease-in-out infinite;">
+            <svg width="36" height="46" viewBox="0 0 43 55" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: block; transform: rotate(180deg);" aria-hidden="true">
+                <path d="M15 2.5H12.5V0H15H17.5V2.5H15ZM17.5 7.5V10V12.5V15V17.5V20V22.5V25H20V22.5V20H22.5H25V17.5H22.5H20V15V12.5V10V7.5V5V2.5H17.5V5V7.5ZM32.5 20V17.5H30H27.5V20H30H32.5ZM25 25H27.5V22.5V20H25V22.5V25ZM40 25V22.5H37.5V25H40ZM40 25V27.5V30V32.5V35V37.5V40V42.5H42.5V40V37.5V35V32.5V30V27.5V25H40ZM37.5 45V47.5V50H40V47.5V45V42.5H37.5V45ZM35 52.5H32.5H30H27.5H25H22.5H20H17.5H15V50H12.5V52.5V55H15H17.5H20H22.5H25H27.5H30H32.5H35H37.5V52.5V50H35V52.5ZM32.5 25H35V22.5H37.5V20H35H32.5V22.5V25ZM10 27.5V30V32.5V35H12.5V32.5V30V27.5V25V22.5V20V17.5V15V12.5V10V7.5V5V2.5H10V5V7.5V10V12.5V15V17.5V20V22.5V25H7.5V27.5H10ZM2.5 25H5H7.5V22.5H5H2.5H0V25V27.5V30H2.5V27.5V25ZM2.5 30V32.5H5V30H2.5ZM7.5 32.5H5V35V37.5H7.5V35V32.5ZM10 40V37.5H7.5V40V42.5V45H10V42.5V40ZM12.5 45H10V47.5V50H12.5V47.5V45Z" fill="#1f1f1f"></path>
+              </svg>
+          </div>
+        </div>
+      </section>
+      <section style="padding: 160px var(--pad); box-sizing: border-box;">
+        <div data-cs-col="" style="max-width: 900px; margin: 0 auto;">
+        <div data-reveal="" style="margin: 0px 0 0;">
+          <h2 data-reveal="" style="margin: 0 0 32px; font-size: clamp(24px, 3.4vw, 44px); line-height: 1.1; letter-spacing: -0.04em; text-wrap: pretty;">UltraFICO Score</h2>
+          <p data-reveal="" style="margin: 0 0 48px; font-size: clamp(16px, 1.5vw, 20px); line-height: 1.7; letter-spacing: -0.02em; text-wrap: pretty;">In May 2026, I redesigned the UltraFICO Score consumer page on FICO.com as part of the product’s General Availability launch. Working alongside the Scores product, legal, and creative teams, I updated the layout, messaging, imagery, and components to reflect the next-generation positioning of the score.</p>
+          <div data-reveal="" data-figure-full="" style="display: block;">
+            <video src="uploads/portfolio_clip_4.mp4" autoplay="{{ true }}" loop="{{ true }}" muted="{{ true }}" playsinline="{{ true }}" style="display: block; width: 100%; height: auto; border-radius: 6px; border: 0.5px solid #d0d6da; background: #f2f1ef;"></video>
+          </div>
+        </div>
+        <div data-reveal="" style="margin: 160px 0 0;">
+          <h2 data-reveal="" style="margin: 0 0 32px; font-size: clamp(24px, 3.4vw, 44px); line-height: 1.1; letter-spacing: -0.04em; text-wrap: pretty;">FICO Score Credit Insights Report</h2>
+          <p data-reveal="" style="margin: 0 0 48px; font-size: clamp(16px, 1.5vw, 20px); line-height: 1.7; letter-spacing: -0.02em; text-wrap: pretty;">I designed and launched the landing page for FICO’s inaugural Credit Insights Report in September 2025, supporting a press announcement covered by 3 major media outlets and integrated across paid campaigns, webinars, and events. The page has since been updated to support the 2026 report, establishing it as a recurring biannual destination for lenders and media.</p>
+          <div data-reveal="" data-figure-full="" style="display: block;">
+            <video src="uploads/portfolio_clip_7.mp4" autoplay="{{ true }}" loop="{{ true }}" muted="{{ true }}" playsinline="{{ true }}" style="display: block; width: 100%; height: auto; border-radius: 6px; border: 0.5px solid #d0d6da; background: #f2f1ef;"></video>
+          </div>
+        </div>
+        <div data-reveal="" style="margin: 160px 0 0;">
+          <h2 data-reveal="" style="margin: 0 0 32px; font-size: clamp(24px, 3.4vw, 44px); line-height: 1.1; letter-spacing: -0.04em; text-wrap: pretty;">FICO World 26</h2>
+          <p data-reveal="" style="margin: 0 0 48px; font-size: clamp(16px, 1.5vw, 20px); line-height: 1.7; letter-spacing: -0.02em; text-wrap: pretty;">I owned the design and build of the FICO World 2026 registration site in Cvent, maintaining consistent branding across all pages through the day of the event. The experience drove 1,996 registrations and a 93.9% attendee conversion rate. I’ve owned this experience since 2024 and continue to evolve it each year.</p>
+          <div data-reveal="" data-figure-full="" style="display: block;">
+            <video src="uploads/portfolio_clip_6.mp4" autoplay="{{ true }}" loop="{{ true }}" muted="{{ true }}" playsinline="{{ true }}" style="display: block; width: 100%; height: auto; border-radius: 6px; border: 0.5px solid #d0d6da; background: #f2f1ef;"></video>
+          </div>
+        </div>
+        <div data-reveal="" style="margin: 160px 0 0;">
+          <h2 data-reveal="" style="margin: 0 0 32px; font-size: clamp(24px, 3.4vw, 44px); line-height: 1.1; letter-spacing: -0.04em; text-wrap: pretty;">Lloyds Banking Group Microsite</h2>
+          <p data-reveal="" style="margin: 0 0 48px; font-size: clamp(16px, 1.5vw, 20px); line-height: 1.7; letter-spacing: -0.02em; text-wrap: pretty;">I designed and built a dedicated microsite for Lloyds Banking Group as part of FICO’s Account-Based Marketing program. The site serves as a fully branded digital hub tailored to LBG’s strategic priorities, supporting C-suite engagement and serving as the central destination for all account engagement plays. I received a Spot Award for my contribution to the ABM microsite program.</p>
+          <div data-reveal="" data-figure-full="" style="display: block;">
+            <video src="uploads/portfolio_clip_5.mp4" autoplay="{{ true }}" loop="{{ true }}" muted="{{ true }}" playsinline="{{ true }}" style="display: block; width: 100%; height: auto; border-radius: 6px; border: 0.5px solid #d0d6da; background: #f2f1ef;"></video>
+          </div>
+        </div>
+        </div>
+      </section>
+      </sc-if>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isDsOverlay }}" hint-placeholder-val="{{ false }}">
+    <div data-overlay-dim="" style="{{ backdropStyle }}"></div>
+    <div style="{{ sheetUnderlayStyle }}"></div>
+    <div data-overlay-scroll="" style="{{ sheetStyle }}">
+      <div style="position: sticky; top: 24px; height: 0; z-index: 80;">
+        <button onClick="{{ closeOverlay }}" aria-label="Close" style="position: absolute; right: 24px; top: 0; z-index: 80; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border-radius: 999px; color: #1f1f1f; font-family: inherit; font-size: 16px; line-height: 1; cursor: pointer; background: rgba(255,255,255,0.9); background: rgba(255,255,255,0.55); -webkit-backdrop-filter: blur(20px) saturate(180%); backdrop-filter: blur(20px) saturate(180%); border: 1px solid rgba(255,255,255,0.4); box-shadow: inset 0 1px 0 rgba(255,255,255,0.7), 0 4px 24px rgba(0,0,0,0.08);">✕</button>
+      </div>
+
+      <sc-if value="{{ isDsLocked }}" hint-placeholder-val="{{ false }}">
+      <section style="background: #EAEEFE; color: #1f1f1f; padding: 96px var(--pad); box-sizing: border-box; min-height: calc(100vh - 32px); display: flex; flex-direction: column; align-items: center; justify-content: center;">
+        <div style="max-width: 900px; margin: 0 auto; width: 100%; text-align: center;">
+          <p style="margin: 0 0 48px; font-size: clamp(16px, 1.5vw, 20px); line-height: 1.7; letter-spacing: -0.02em; text-wrap: pretty;">This work is password protected</p>
+          <div style="display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; align-items: center;">
+            <input type="password" value="{{ pwValue }}" onChange="{{ onPwChange }}" onKeyDown="{{ onPwKey }}" placeholder="PASSWORD" aria-label="Password" style="font-family: 'IBM Plex Mono', ui-monospace, monospace; height: 48px; padding: 0 20px; border: 1px solid #1f1f1f; border-radius: 999px; background: transparent; color: #1f1f1f; font-size: 12px; letter-spacing: 0.02em; line-height: 1.5; outline: none; min-width: 220px;">
+            <button onClick="{{ onPwSubmit }}" style="font-family: 'IBM Plex Mono', ui-monospace, monospace; display: inline-flex; align-items: center; height: 48px; padding: 0 24px; border: none; border-radius: 999px; background: #1f1f1f; color: #ffffff; font-size: 12px; letter-spacing: 0.02em; text-transform: uppercase; line-height: 1.5; cursor: pointer;">Enter</button>
+          </div>
+          <sc-if value="{{ pwError }}" hint-placeholder-val="{{ false }}">
+            <p style="margin: 24px 0 0; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.02em; text-transform: uppercase; line-height: 1.5; color: #1f1f1f;">Incorrect password</p>
+          </sc-if>
+        </div>
+      </section>
+      </sc-if>
+      <sc-if value="{{ isDsUnlocked }}" hint-placeholder-val="{{ true }}">
+      <section style="background: #EAEEFE; color: #1f1f1f; padding: 96px var(--pad); box-sizing: border-box; min-height: calc(100vh - 32px); display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative;">
+        <div style="max-width: 1100px; margin: 0 auto; width: 100%;">
+          <p style="margin: 0; font-size: var(--display); line-height: 1.05; letter-spacing: -0.05em; text-align: center; text-wrap: pretty;">How I <span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-weight: 400; font-style: italic; letter-spacing: -0.09em;">rebuilt</span> FICO's design system from 200 to 400 components, cutting page-building time by 60% across 7+ digital properties.</p>
+          <div style="height: 1px; background: #d0d6da; width: 100%; margin: 96px 0 0;"></div>
+          <div data-stats-row="" data-stats-center="" style="display: flex; justify-content: space-between; align-items: flex-start; gap: 32px; padding-top: 32px; width: 100%; text-align: left;">
+            <sc-for list="{{ dsMeta }}" as="m" hint-placeholder-count="3">
+              <div style="display: flex; flex-direction: column; gap: 8px; min-width: 0; overflow-wrap: anywhere;">
+                <span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.02em; text-transform: uppercase; line-height: 1.5; color: #1f1f1f;">{{ m.label }}</span>
+                <span style="{{ m.valueStyle }}">{{ m.value }}</span>
+              </div>
+            </sc-for>
+          </div>
+          <div onClick="{{ scrollToContent }}" style="margin-top: 96px; display: flex; justify-content: center; cursor: pointer; animation: scroll-bob 2.4s ease-in-out infinite;">
+            <svg width="36" height="46" viewBox="0 0 43 55" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: block; transform: rotate(180deg);" aria-hidden="true">
+                <path d="M15 2.5H12.5V0H15H17.5V2.5H15ZM17.5 7.5V10V12.5V15V17.5V20V22.5V25H20V22.5V20H22.5H25V17.5H22.5H20V15V12.5V10V7.5V5V2.5H17.5V5V7.5ZM32.5 20V17.5H30H27.5V20H30H32.5ZM25 25H27.5V22.5V20H25V22.5V25ZM40 25V22.5H37.5V25H40ZM40 25V27.5V30V32.5V35V37.5V40V42.5H42.5V40V37.5V35V32.5V30V27.5V25H40ZM37.5 45V47.5V50H40V47.5V45V42.5H37.5V45ZM35 52.5H32.5H30H27.5H25H22.5H20H17.5H15V50H12.5V52.5V55H15H17.5H20H22.5H25H27.5H30H32.5H35H37.5V52.5V50H35V52.5ZM32.5 25H35V22.5H37.5V20H35H32.5V22.5V25ZM10 27.5V30V32.5V35H12.5V32.5V30V27.5V25V22.5V20V17.5V15V12.5V10V7.5V5V2.5H10V5V7.5V10V12.5V15V17.5V20V22.5V25H7.5V27.5H10ZM2.5 25H5H7.5V22.5H5H2.5H0V25V27.5V30H2.5V27.5V25ZM2.5 30V32.5H5V30H2.5ZM7.5 32.5H5V35V37.5H7.5V35V32.5ZM10 40V37.5H7.5V40V42.5V45H10V42.5V40ZM12.5 45H10V47.5V50H12.5V47.5V45Z" fill="#1f1f1f"></path>
+              </svg>
+          </div>
+        </div>
+      </section>
+
+      <section style="padding: 160px var(--pad); box-sizing: border-box;">
+        <div data-cs-col="" style="max-width: 900px; margin: 0 auto;">
+        <h2 data-reveal="" style="margin: 0px 0 32px; font-size: clamp(24px, 3.4vw, 44px); line-height: 1.1; letter-spacing: -0.04em; text-wrap: pretty;">Why did we need a new design system?</h2>
+        
+        
+        <p data-reveal="" style="margin: 0 0 16px; font-size: clamp(16px, 1.5vw, 20px); line-height: 1.7; letter-spacing: -0.02em; text-wrap: pretty;">In 2022, FICO underwent a major brand refresh, but our existing 200-component design system couldn't support it. We lacked auto layout, variables, and tokens, which made the system hard to maintain and limited our creative flexibility. The refresh also brought new guiding principles of <b>Clear &amp; Precise, Bold, and Human</b>, replacing our previous principles of Pioneering, Empowering, Analytical, Transformative, and Bold. This wasn't cosmetic, it represented our transition from product-centric to customer-centric design thinking.</p>
+        <p data-reveal="" style="margin: 0 0 16px; font-size: clamp(16px, 1.5vw, 20px); line-height: 1.7; letter-spacing: -0.02em; text-wrap: pretty;">By creating a new design system, we set out to:</p>
+        <ul data-reveal="" style="margin: 24px 0 32px; padding-left: 24px; list-style: disc; font-size: clamp(16px, 1.5vw, 20px); line-height: 1.6; letter-spacing: -0.02em; text-align: left; text-wrap: pretty;">
+          <li style="margin: 0 0 16px;">Align our team with shared principles</li>
+          <li style="margin: 0 0 16px;">Accelerate design and development workflows</li>
+          <li style="margin: 0 0 16px;">Bring our new brand principles to life across all touchpoints</li>
+          <li style="margin: 0;">Enable creative exploration within a consistent framework</li>
+        </ul>
+        <p data-reveal="" style="margin: 0 0 0px; font-size: clamp(16px, 1.5vw, 20px); line-height: 1.7; letter-spacing: -0.02em; text-wrap: pretty;">Despite limited resources, investing in a systematic approach was important for our brand's future and our ability to deliver exceptional customer experiences at scale.</p>
+        <h2 data-reveal="" style="margin: 160px 0 32px; font-size: clamp(24px, 3.4vw, 44px); line-height: 1.1; letter-spacing: -0.04em; text-wrap: pretty;">Our process</h2>
+        <p data-reveal="" style="margin: 0 0 0px; font-size: clamp(16px, 1.5vw, 20px); line-height: 1.7; letter-spacing: -0.02em; text-wrap: pretty;">Working from the comprehensive brand guidelines that the design agency Porter Novelli developed, we began our redesign process.</p>
+        <h3 data-reveal="" style="margin: 64px 0 32px; font-size: clamp(20px, 2.4vw, 32px); line-height: 1.2; letter-spacing: -0.03em; text-wrap: pretty;">Visual inventory</h3>
+        <p data-reveal="" style="margin: 0 0 0px; font-size: clamp(16px, 1.5vw, 20px); line-height: 1.7; letter-spacing: -0.02em; text-wrap: pretty;">We started by auditing our existing system to understand what we were working with. Our system consisted of approximately 200 components, including 80 patterns or layouts used across FICO.com and our other digital properties. Since all components lived in Figma, we could easily establish a baseline of our design system's current state and assess how well it aligned with our new brand principles.</p>
+        <div data-reveal="" style="margin: 48px 0;">
+          <div data-reveal="" data-figure-row="" style="display: grid; grid-template-columns: 70% 1fr; gap: 32px; align-items: start;">
+            <img src="uploads/Screenshot-2025-08-13-at-3.06.44PM.png" alt="FICO Digital Design System library in Figma" style="display: block; width: 100%; height: auto; border-radius: 6px; border: 0.5px solid #d0d6da; background: #f2f1ef;">
+            <p style="margin: 0; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; line-height: 1.5; letter-spacing: 0; text-align: left; color: #FE4EDC;">Our previous design system in Figma</p>
+          </div>
+        </div>
+        <h3 data-reveal="" style="margin: 64px 0 32px; font-size: clamp(20px, 2.4vw, 32px); line-height: 1.2; letter-spacing: -0.03em; text-wrap: pretty;">Assessing each element</h3>
+        <p data-reveal="" style="margin: 0 0 16px; font-size: clamp(16px, 1.5vw, 20px); line-height: 1.7; letter-spacing: -0.02em; text-wrap: pretty;">To evaluate our current system against new brand principles and practical needs, our three-person team reviewed each component in structured sessions, assessing:</p>
+        <ul data-reveal="" style="margin: 24px 0 32px; padding-left: 24px; list-style: disc; font-size: clamp(16px, 1.5vw, 20px); line-height: 1.6; letter-spacing: -0.02em; text-align: left; text-wrap: pretty;">
+          <li style="margin: 0 0 16px;">Usage frequency across our digital properties</li>
+          <li style="margin: 0 0 16px;">Alignment with our new brand principles (Clear &amp; Precise, Bold, Human)</li>
+          <li style="margin: 0;">Potential for reinvention to better serve our content needs</li>
+        </ul>
+        <h3 data-reveal="" style="margin: 64px 0 32px; font-size: clamp(20px, 2.4vw, 32px); line-height: 1.2; letter-spacing: -0.03em; text-wrap: pretty;">Key findings</h3>
+        <p data-reveal="" style="margin: 0 0 0px; font-size: clamp(16px, 1.5vw, 20px); line-height: 1.7; letter-spacing: -0.02em; text-wrap: pretty;">Our assessment revealed three main shortcomings that shaped our redesign approach:</p>
+        <div data-reveal="" style="margin: 48px 0 0;">
+          <p data-reveal="" style="margin: 0 0 32px; font-size: clamp(16px, 1.5vw, 20px); line-height: 1.7; letter-spacing: -0.02em; text-wrap: pretty;">01. Limited layout diversity</p>
+          <div data-reveal="" data-finding-row="" style="display: grid; grid-template-columns: 70% 1fr; gap: 32px; align-items: start;">
+            <img src="uploads/Overview-Layout.png" alt="The eight existing overview layout options" style="display: block; width: 100%; height: auto; border-radius: 6px; border: 0.5px solid #d0d6da; background: #f2f1ef;">
+            <p style="margin: 0; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; line-height: 1.5; letter-spacing: 0; text-align: left; color: #FE4EDC;">Overview layouts were our most-used pattern, but we only had 8 options to work with across 7+ digital properties</p>
+          </div>
+        </div>
+        <div data-reveal="" style="margin: 96px 0 0;">
+          <p data-reveal="" style="margin: 0 0 32px; font-size: clamp(16px, 1.5vw, 20px); line-height: 1.7; letter-spacing: -0.02em; text-wrap: pretty;">02. Outdated visual elements</p>
+          <div data-reveal="" data-finding-row="" style="display: grid; grid-template-columns: 70% 1fr; gap: 32px; align-items: start;">
+            <img src="uploads/8_Light.png" alt="Layout using the old graphic arrows and dotted overlays" style="display: block; width: 100%; height: auto; border-radius: 6px; border: 0.5px solid #d0d6da; background: #f2f1ef;">
+            <p style="margin: 0; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; line-height: 1.5; letter-spacing: 0; text-align: left; color: #FE4EDC;">All instances of our old graphic arrows and dotted overlays needed replacement</p>
+          </div>
+        </div>
+        <div data-reveal="" style="margin: 96px 0 0;">
+          <p data-reveal="" style="margin: 0 0 32px; font-size: clamp(16px, 1.5vw, 20px); line-height: 1.7; letter-spacing: -0.02em; text-wrap: pretty;">03. Static, disengaging layouts</p>
+          <div data-reveal="" data-finding-row="" style="display: grid; grid-template-columns: 70% 1fr; gap: 32px; align-items: start;">
+            <img src="uploads/2_Features_About_43_Light.png" alt="Static related resources layout with no interaction or animation" style="display: block; width: 100%; height: auto; border-radius: 6px; border: 0.5px solid #d0d6da; background: #f2f1ef;">
+            <p style="margin: 0; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; line-height: 1.5; letter-spacing: 0; text-align: left; color: #FE4EDC;">Components lacked dynamic interactions or animations</p>
+          </div>
+        </div>
+        <h3 data-reveal="" style="margin: 64px 0 32px; font-size: clamp(20px, 2.4vw, 32px); line-height: 1.2; letter-spacing: -0.03em; text-wrap: pretty;">Generating solutions</h3>
+        <p data-reveal="" style="margin: 0 0 16px; font-size: clamp(16px, 1.5vw, 20px); line-height: 1.7; letter-spacing: -0.02em; text-wrap: pretty;">Based on these findings, we began generating solutions specifically focusing on:</p>
+        <ul data-reveal="" style="margin: 24px 0 32px; padding-left: 24px; list-style: disc; font-size: clamp(16px, 1.5vw, 20px); line-height: 1.6; letter-spacing: -0.02em; text-align: left; text-wrap: pretty;">
+          <li style="margin: 0 0 16px;">Expanding layout options for our most used components</li>
+          <li style="margin: 0 0 16px;">Integrating the new circle icon as a visual communication tool</li>
+          <li style="margin: 0 0 16px;">Adding animations and interactions to create a more compelling user experience</li>
+          <li style="margin: 0;">Applying our updated typography and new color palette across component states</li>
+        </ul>
+        <h3 data-reveal="" style="margin: 64px 0 32px; font-size: clamp(20px, 2.4vw, 32px); line-height: 1.2; letter-spacing: -0.03em; text-wrap: pretty;">Converging on a direction</h3>
+        <p data-reveal="" style="margin: 0 0 16px; font-size: clamp(16px, 1.5vw, 20px); line-height: 1.7; letter-spacing: -0.02em; text-wrap: pretty;">After generating several solutions, we needed to decide which components and approaches would have the most impact, considering our capacity for implementation and maintenance.</p>
+        <p data-reveal="" style="margin: 0 0 0px; font-size: clamp(16px, 1.5vw, 20px); line-height: 1.7; letter-spacing: -0.02em; text-wrap: pretty;">We tested our components with realistic FICO content, which revealed unexpected issues with accessibility and scalability. For example, our header designs, featuring isolated imagery and overlaid O graphics, looked great in design files but proved problematic in practice: sourcing appropriate imagery was unsustainable, and the O graphic created contrast issues with navigation elements.</p>
+        <div data-reveal="" style="margin: 48px 0;">
+          <div data-reveal="" data-figure-row="" style="display: grid; grid-template-columns: 70% 1fr; gap: 32px; align-items: start;">
+            <img src="uploads/Header-7-1.png" alt="Old header layout with isolated imagery and overlaid O graphic" style="display: block; width: 100%; height: auto; border-radius: 6px; border: 0.5px solid #d0d6da; background: #f2f1ef;">
+            <p style="margin: 0; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; line-height: 1.5; letter-spacing: 0; text-align: left; color: #FE4EDC;">Old header layout that had to be discarded due to maintenance and accessibility issues</p>
+          </div>
+        </div>
+        <p data-reveal="" style="margin: 0 0 0px; font-size: clamp(16px, 1.5vw, 20px); line-height: 1.7; letter-spacing: -0.02em; text-wrap: pretty;">Because our biggest constraint was working with external developers who weren't embedded in our daily workflow, our components needed to be not only effective but also clearly documented and technically feasible. Many of our initial animation ideas were discarded as a result, but this left us with more refined, purposeful interactions.</p>
+        <h3 data-reveal="" style="margin: 64px 0 32px; font-size: clamp(20px, 2.4vw, 32px); line-height: 1.2; letter-spacing: -0.03em; text-wrap: pretty;">Preparing for handoff</h3>
+        <p data-reveal="" style="margin: 0 0 0px; font-size: clamp(16px, 1.5vw, 20px); line-height: 1.7; letter-spacing: -0.02em; text-wrap: pretty;">Before handing off designs to our external development partners, we leveraged Figma's advanced features to ensure smooth collaboration and future maintenance:</p>
+        <p data-reveal="" style="margin: 48px 0 0; font-size: clamp(16px, 1.5vw, 20px); line-height: 1.7; letter-spacing: -0.02em; text-wrap: pretty;">Components were made responsive using auto-layout, allowing them to be used across various devices.</p>
+        <div data-reveal="" style="margin: 48px 0;">
+          <div data-reveal="" data-figure-full="" style="display: block;">
+            <video src="uploads/portfolio_clip_1.mp4" autoplay="{{ true }}" loop="{{ true }}" muted="{{ true }}" playsinline="{{ true }}" style="display: block; width: 100%; height: auto; border-radius: 6px; border: 0.5px solid #d0d6da; background: #f2f1ef;"></video>
+          </div>
+        </div>
+        <p data-reveal="" style="margin: 0 0 0px; font-size: clamp(16px, 1.5vw, 20px); line-height: 1.7; letter-spacing: -0.02em; text-wrap: pretty;">We used Figma's variants feature to combine different states of components with custom properties, making them easier to maintain and swap.</p>
+        <div data-reveal="" style="margin: 48px 0;">
+          <div data-reveal="" data-figure-full="" style="display: block;">
+            <video src="uploads/portfolio_clip_2.mp4" autoplay="{{ true }}" loop="{{ true }}" muted="{{ true }}" playsinline="{{ true }}" style="display: block; width: 100%; height: auto; border-radius: 6px; border: 0.5px solid #d0d6da; background: #f2f1ef;"></video>
+          </div>
+        </div>
+        <p data-reveal="" style="margin: 0 0 0px; font-size: clamp(16px, 1.5vw, 20px); line-height: 1.7; letter-spacing: -0.02em; text-wrap: pretty;">We also implemented design tokens using Figma's variable feature for our colors, typography, and spacing values, enabling seamless switching between different contexts, such as light and dark modes.</p>
+        <div data-reveal="" style="margin: 48px 0;">
+          <div data-reveal="" data-figure-full="" style="display: block;">
+            <img src="uploads/Screenshot-2025-08-16-at-3.15.00PM.png" alt="Color token table showing values across light, dark, and alternate modes" style="display: block; width: 100%; height: auto; border-radius: 6px; border: 0.5px solid #d0d6da; background: #f2f1ef;">
+          </div>
+        </div>
+        <h2 data-reveal="" style="margin: 160px 0 32px; font-size: clamp(24px, 3.4vw, 44px); line-height: 1.1; letter-spacing: -0.04em; text-wrap: pretty;">Results &amp; impact</h2>
+        <p data-reveal="" style="margin: 0 0 0px; font-size: clamp(16px, 1.5vw, 20px); line-height: 1.7; letter-spacing: -0.02em; text-wrap: pretty;">We applied our new branding to seven major digital properties, including FICO.com, FICO Score, and FICO Platform.</p>
+        <div data-reveal="" style="margin: 48px 0;">
+          <div data-reveal="" data-figure-row="" style="display: grid; grid-template-columns: 70% 1fr; gap: 32px; align-items: start;">
+            <img src="uploads/Screenshot-2025-09-30-at-1.57.33PM.png" alt="Sections of the new design system in Figma" style="display: block; width: 100%; height: auto; border-radius: 6px; border: 0.5px solid #d0d6da; background: #f2f1ef;">
+            <p style="margin: 0; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; line-height: 1.5; letter-spacing: 0; text-align: left; color: #FE4EDC;">A section of our new design system in Figma</p>
+          </div>
+        </div>
+        <h3 data-reveal="" style="margin: 64px 0 32px; font-size: clamp(20px, 2.4vw, 32px); line-height: 1.2; letter-spacing: -0.03em; text-wrap: pretty;">Quantifiable impact</h3>
+        <ul data-reveal="" style="margin: 24px 0 32px; padding-left: 24px; list-style: disc; font-size: clamp(16px, 1.5vw, 20px); line-height: 1.6; letter-spacing: -0.02em; text-align: left; text-wrap: pretty;">
+          <li style="margin: 0 0 16px;">Expanded from 200 to <b>400 modular components</b></li>
+          <li style="margin: 0 0 16px;"><b>60% reduction</b> in page-building time</li>
+          <li style="margin: 0;">Easier content population, responsive previews, and developer handoffs</li>
+        </ul>
+        <h3 data-reveal="" style="margin: 64px 0 32px; font-size: clamp(20px, 2.4vw, 32px); line-height: 1.2; letter-spacing: -0.03em; text-wrap: pretty;">Brand alignment achievements</h3>
+        <p data-reveal="" style="margin: 0; font-size: clamp(16px, 1.5vw, 20px); line-height: 1.7; letter-spacing: -0.02em; text-wrap: pretty;">Our digital properties finally embody the Clear &amp; Precise, Bold, and Human principles.</p>
+        <p data-reveal="" style="margin: 0; font-size: clamp(16px, 1.5vw, 20px); line-height: 1.7; letter-spacing: -0.02em; text-wrap: pretty;">Our new circle icon highlights key information across layouts</p>
+        <div data-reveal="" style="margin: 48px 0;">
+          <div data-reveal="" data-figure-row="" style="display: grid; grid-template-columns: 70% 1fr; gap: 32px; align-items: start;">
+            <img src="uploads/5_Testimonials_Quote_5_Light-1.png" alt="Previous testimonial layout with only the quote and author" style="display: block; width: 100%; height: auto; border-radius: 6px; border: 0.5px solid #d0d6da; background: #f2f1ef;">
+            <p style="margin: 0; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; line-height: 1.5; letter-spacing: 0; text-align: left; color: #FE4EDC;">Before: A previous testimonial layout with just the quote and author</p>
+          </div>
+          <div data-reveal="" data-figure-row="" style="display: grid; grid-template-columns: 70% 1fr; gap: 32px; align-items: start; margin-top: 24px;">
+            <img src="uploads/Testimonial-4-1.png" alt="Updated testimonial layout with the circle icon as focal point" style="display: block; width: 100%; height: auto; border-radius: 6px; border: 0.5px solid #d0d6da; background: #f2f1ef;">
+            <p style="margin: 0; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; line-height: 1.5; letter-spacing: 0; text-align: left; color: #FE4EDC;">After: Adding the circle icon gives the quote a natural focal point alongside other content on a page</p>
+          </div>
+        </div>
+        <p data-reveal="" style="margin: 0; font-size: clamp(16px, 1.5vw, 20px); line-height: 1.7; letter-spacing: -0.02em; text-wrap: pretty;">We replaced abstract imagery with human-centered visuals that better connect with our audiences.</p>
+        <div data-reveal="" style="margin: 48px 0;">
+          <div data-reveal="" data-figure-row="" style="display: grid; grid-template-columns: 70% 1fr; gap: 32px; align-items: start;">
+            <img src="uploads/2_Features_About_61_Light.png" alt="Overview layout with the previous abstract imagery options" style="display: block; width: 100%; height: auto; border-radius: 6px; border: 0.5px solid #d0d6da; background: #f2f1ef;">
+            <p style="margin: 0; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; line-height: 1.5; letter-spacing: 0; text-align: left; color: #FE4EDC;">Before: An overview layout with previous imagery options</p>
+          </div>
+          <div data-reveal="" data-figure-row="" style="display: grid; grid-template-columns: 70% 1fr; gap: 32px; align-items: start; margin-top: 24px;">
+            <img src="uploads/Screenshot-2025-08-19-at-4.01.35PM-9fe4231a.png" alt="Same overview layout with updated typography and human-centered imagery" style="display: block; width: 100%; height: auto; border-radius: 6px; border: 0.5px solid #d0d6da; background: #f2f1ef;">
+            <p style="margin: 0; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; line-height: 1.5; letter-spacing: 0; text-align: left; color: #FE4EDC;">After: The same layout with updated typography and human-centered imagery</p>
+          </div>
+        </div>
+        <p data-reveal="" style="margin: 0; font-size: clamp(16px, 1.5vw, 20px); line-height: 1.7; letter-spacing: -0.02em; text-wrap: pretty;">Most importantly, we transformed our static, disengaging layouts by adding dynamic interactions and animations that reflect our new 'Human' brand principle.</p>
+        <div data-reveal="" style="margin: 48px 0;">
+          <div data-reveal="" data-figure-row="" style="display: grid; grid-template-columns: 70% 1fr; gap: 32px; align-items: start;">
+            <img src="uploads/2_Features_About_43_Light-2.png" alt="The single previous related resources layout" style="display: block; width: 100%; height: auto; border-radius: 6px; border: 0.5px solid #d0d6da; background: #f2f1ef;">
+            <p style="margin: 0; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; line-height: 1.5; letter-spacing: 0; text-align: left; color: #FE4EDC;">Before: Our singular previous layout option for related resources</p>
+          </div>
+          <div data-reveal="" data-figure-row="" style="display: grid; grid-template-columns: 70% 1fr; gap: 32px; align-items: start; margin-top: 24px;">
+            <video src="uploads/portfolio_clip_3.mp4" autoplay="{{ true }}" loop="{{ true }}" muted="{{ true }}" playsinline="{{ true }}" style="display: block; width: 100%; height: auto; border-radius: 6px; border: 0.5px solid #d0d6da; background: #f2f1ef;"></video>
+            <p style="margin: 0; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; line-height: 1.5; letter-spacing: 0; text-align: left; color: #FE4EDC;">After: One of four new layout options featuring human-centered imagery, subtle animation, and interactive elements</p>
+          </div>
+        </div>
+        <p data-reveal="" style="margin: 0; font-size: clamp(16px, 1.5vw, 20px); line-height: 1.7; letter-spacing: -0.02em; text-wrap: pretty;">These changes represent our shift from product-centric to customer-centric design thinking, with every component now serving our mission of empowering businesses to make complex decisions with precision and confidence.</p>
+        <h3 data-reveal="" style="margin: 64px 0 32px; font-size: clamp(20px, 2.4vw, 32px); line-height: 1.2; letter-spacing: -0.03em; text-wrap: pretty;">Lessons learned</h3>
+        <p data-reveal="" style="margin: 0 0 0px; font-size: clamp(16px, 1.5vw, 20px); line-height: 1.7; letter-spacing: -0.02em; text-wrap: pretty;">Throughout this project, I learned that working within real constraints (a small team, external development partners, and limited maintenance capacity) strengthened our design decisions. With clear criteria focusing on usage frequency, brand alignment potential, and implementation feasibility, we were forced to move beyond initial concepts (like animation-heavy interactions) toward more refined, sustainable solutions. Embracing limitations continues to guide our system's evolution and proves to be more effective than unconstrained exploration.</p>
+        <h3 data-reveal="" style="margin: 64px 0 32px; font-size: clamp(20px, 2.4vw, 32px); line-height: 1.2; letter-spacing: -0.03em; text-wrap: pretty;">Looking forward</h3>
+        <div data-reveal="" style="margin: 0 0 16px; font-size: clamp(16px, 1.5vw, 20px); line-height: 1.7; letter-spacing: -0.02em; text-wrap: pretty;"><div>Design systems aren't static, they need constant iteration as products, teams, and tools evolve. I'm now exploring how AI can support this ongoing work. Using Claude connected to our Figma files through MCP, I can now catch issues, like the contrast problems we found late in this project, the moment a token changes, instead of waiting until testing with real content surfaces them.&nbsp;<copied-from-editor></copied-from-editor></div></div>
+        
+        </div>
+      </section>
+      </sc-if>
+    </div>
+  </sc-if>
+  <sc-if value="{{ isPricingOverlay }}" hint-placeholder-val="{{ false }}">
+    <div data-overlay-dim="" style="{{ backdropStyle }}"></div>
+    <div style="{{ sheetUnderlayStyle }}"></div>
+    <div data-overlay-scroll="" style="{{ sheetStyle }}">
+      <div style="position: sticky; top: 24px; height: 0; z-index: 80;">
+        <button onClick="{{ closeOverlay }}" aria-label="Close" style="position: absolute; right: 24px; top: 0; z-index: 80; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border-radius: 999px; color: #1f1f1f; font-family: inherit; font-size: 16px; line-height: 1; cursor: pointer; background: rgba(255,255,255,0.9); background: rgba(255,255,255,0.55); -webkit-backdrop-filter: blur(20px) saturate(180%); backdrop-filter: blur(20px) saturate(180%); border: 1px solid rgba(255,255,255,0.4); box-shadow: inset 0 1px 0 rgba(255,255,255,0.7), 0 4px 24px rgba(0,0,0,0.08);">✕</button>
+      </div>
+
+      <sc-if value="{{ isPricingLocked }}" hint-placeholder-val="{{ false }}">
+      <section style="background: #F1F1FF; color: #1f1f1f; padding: 96px var(--pad); box-sizing: border-box; min-height: calc(100vh - 32px); display: flex; flex-direction: column; align-items: center; justify-content: center;">
+        <div style="max-width: 900px; margin: 0 auto; width: 100%; text-align: center;">
+          <p style="margin: 0 0 48px; font-size: clamp(16px, 1.5vw, 20px); line-height: 1.7; letter-spacing: -0.02em; text-wrap: pretty;">This work is password protected</p>
+          <div style="display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; align-items: center;">
+            <input type="password" value="{{ pwValue }}" onChange="{{ onPwChange }}" onKeyDown="{{ onPwKey }}" placeholder="PASSWORD" aria-label="Password" style="font-family: 'IBM Plex Mono', ui-monospace, monospace; height: 48px; padding: 0 20px; border: 1px solid #1f1f1f; border-radius: 999px; background: transparent; color: #1f1f1f; font-size: 12px; letter-spacing: 0.02em; line-height: 1.5; outline: none; min-width: 220px;">
+            <button onClick="{{ onPwSubmit }}" style="font-family: 'IBM Plex Mono', ui-monospace, monospace; display: inline-flex; align-items: center; height: 48px; padding: 0 24px; border: none; border-radius: 999px; background: #1f1f1f; color: #ffffff; font-size: 12px; letter-spacing: 0.02em; text-transform: uppercase; line-height: 1.5; cursor: pointer;">Enter</button>
+          </div>
+          <sc-if value="{{ pwError }}" hint-placeholder-val="{{ false }}">
+            <p style="margin: 24px 0 0; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.02em; text-transform: uppercase; line-height: 1.5; color: #1f1f1f;">Incorrect password</p>
+          </sc-if>
+        </div>
+      </section>
+      </sc-if>
+      <sc-if value="{{ isPricingUnlocked }}" hint-placeholder-val="{{ true }}">
+      <section style="background: #F1F1FF; color: #1f1f1f; padding: 96px var(--pad); box-sizing: border-box; min-height: calc(100vh - 32px); display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative;">
+        <div style="max-width: 1100px; margin: 0 auto; width: 100%;">
+          <p style="margin: 0; font-size: var(--display); line-height: 1.05; letter-spacing: -0.05em; text-align: center; text-wrap: pretty;">How I <span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-weight: 400; font-style: italic; letter-spacing: -0.09em;">designed</span> a reusable pricing component for FICO's design system, cutting content update time by 60-70% and unblocking SEO tracking.</p>
+          <div style="height: 1px; background: #d0d6da; width: 100%; margin: 96px 0 0;"></div>
+          <div data-stats-row="" data-stats-center="" style="display: flex; justify-content: space-between; align-items: flex-start; gap: 32px; padding-top: 32px; width: 100%; text-align: left;">
+            <sc-for list="{{ pricingMeta }}" as="m" hint-placeholder-count="4">
+              <div style="display: flex; flex-direction: column; gap: 8px; min-width: 0; overflow-wrap: anywhere;">
+                <span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.02em; text-transform: uppercase; line-height: 1.5; color: #1f1f1f;">{{ m.label }}</span>
+                <span style="{{ m.valueStyle }}">{{ m.value }}</span>
+              </div>
+            </sc-for>
+          </div>
+          <div onClick="{{ scrollToContent }}" style="margin-top: 96px; display: flex; justify-content: center; cursor: pointer; animation: scroll-bob 2.4s ease-in-out infinite;">
+            <svg width="36" height="46" viewBox="0 0 43 55" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: block; transform: rotate(180deg);" aria-hidden="true">
+                <path d="M15 2.5H12.5V0H15H17.5V2.5H15ZM17.5 7.5V10V12.5V15V17.5V20V22.5V25H20V22.5V20H22.5H25V17.5H22.5H20V15V12.5V10V7.5V5V2.5H17.5V5V7.5ZM32.5 20V17.5H30H27.5V20H30H32.5ZM25 25H27.5V22.5V20H25V22.5V25ZM40 25V22.5H37.5V25H40ZM40 25V27.5V30V32.5V35V37.5V40V42.5H42.5V40V37.5V35V32.5V30V27.5V25H40ZM37.5 45V47.5V50H40V47.5V45V42.5H37.5V45ZM35 52.5H32.5H30H27.5H25H22.5H20H17.5H15V50H12.5V52.5V55H15H17.5H20H22.5H25H27.5H30H32.5H35H37.5V52.5V50H35V52.5ZM32.5 25H35V22.5H37.5V20H35H32.5V22.5V25ZM10 27.5V30V32.5V35H12.5V32.5V30V27.5V25V22.5V20V17.5V15V12.5V10V7.5V5V2.5H10V5V7.5V10V12.5V15V17.5V20V22.5V25H7.5V27.5H10ZM2.5 25H5H7.5V22.5H5H2.5H0V25V27.5V30H2.5V27.5V25ZM2.5 30V32.5H5V30H2.5ZM7.5 32.5H5V35V37.5H7.5V35V32.5ZM10 40V37.5H7.5V40V42.5V45H10V42.5V40ZM12.5 45H10V47.5V50H12.5V47.5V45Z" fill="#1f1f1f"></path>
+              </svg>
+          </div>
+        </div>
+      </section>
+
+      <section style="padding: 160px var(--pad); box-sizing: border-box;">
+        <div data-cs-col="" style="max-width: 900px; margin: 0 auto;">
+        <h2 data-reveal="" style="margin: 0px 0 32px; font-size: clamp(24px, 3.4vw, 44px); line-height: 1.1; letter-spacing: -0.04em; text-wrap: pretty;">The problem</h2>
+        <p data-reveal="" style="margin: 0 0 16px; font-size: clamp(16px, 1.5vw, 20px); line-height: 1.7; letter-spacing: -0.02em; text-wrap: pretty;">FICO's pricing and licensing information lived on a Ceros page that was off-brand, broke on certain screen sizes, and blocked SEO tracking.</p>
+        <p data-reveal="" style="margin: 0; font-size: clamp(16px, 1.5vw, 20px); line-height: 1.7; letter-spacing: -0.02em; text-wrap: pretty;">The existing pricing layout had three critical issues:</p>
+        <ul data-reveal="" style="margin: 24px 0 32px; padding-left: 24px; list-style: disc; font-size: clamp(16px, 1.5vw, 20px); line-height: 1.6; letter-spacing: -0.02em; text-align: left; text-wrap: pretty;">
+          <li style="margin: 0 0 24px;"><b>Brand inconsistency: </b>The Ceros page used old fonts, colors, and layouts, creating a jarring experience for users navigating from our main site.</li>
+          <li style="margin: 0 0 24px;"><b>Technical limitations:</b>&nbsp;iframed content broke on smaller desktop screens.</li>
+          <li style="margin: 0;"><b>Business impact:</b> Off-brand appearance created distrust during prospect evaluation, and iframed content blocked SEO and analytics tracking.</li>
+        </ul>
+        <div data-reveal="" style="margin: 48px 0;">
+          <div data-reveal="" data-figure-row="" style="display: grid; grid-template-columns: 70% 1fr; gap: 32px; align-items: start;">
+            <img src="uploads/fico.preview.ceros.com_experience-5e31ffd58a490_page_page-5e31ffd51e12f.png" alt="The existing Ceros pricing layout with outdated branding" style="display: block; width: 100%; height: auto; border-radius: 6px; border: 0.5px solid #d0d6da; background: #f2f1ef;">
+            <p style="margin: 0; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; line-height: 1.5; letter-spacing: 0; text-align: left; color: #FE4EDC;">The existing Ceros pricing layout with outdated branding</p>
+          </div>
+        </div>
+        <h2 data-reveal="" style="margin: 160px 0 32px; font-size: clamp(24px, 3.4vw, 44px); line-height: 1.1; letter-spacing: -0.04em; text-wrap: pretty;">My process</h2>
+        <h3 data-reveal="" style="margin: 64px 0 32px; font-size: clamp(20px, 2.4vw, 32px); line-height: 1.2; letter-spacing: -0.03em; text-wrap: pretty;">Research &amp; exploration</h3>
+        <p data-reveal="" style="margin: 0; font-size: clamp(16px, 1.5vw, 20px); line-height: 1.7; letter-spacing: -0.02em; text-wrap: pretty;">I researched pricing layouts at other companies, analyzing components, information hierarchy, and responsive behavior.</p>
+        <div data-reveal="" style="margin: 48px 0;">
+          <div data-reveal="" data-figure-row="" style="display: grid; grid-template-columns: 70% 1fr; gap: 32px; align-items: start;">
+            <img src="uploads/asana.com_pricing_-utm_campaignnamer_us_en_mlti_mlti_search_google_b_lowfunnel-utm_sourcegoogle-utm_mediumpd_cpc_br-utm_contentnamer_us_en_mlti_mlti_search_search_google_mix_3p_asana_pricing_all_exact-utm_termasana20pricing-gclsrc-3.png" alt="Asana's pricing layout demonstrating common patterns that influenced my design" style="display: block; width: 100%; height: auto; border-radius: 6px; border: 0.5px solid #d0d6da; background: #f2f1ef;">
+            <p style="margin: 0; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; line-height: 1.5; letter-spacing: 0; text-align: left; color: #FE4EDC;">Asana's pricing layout demonstrating common patterns that influenced my design</p>
+          </div>
+        </div>
+        <div data-reveal="" style="margin: 48px 0;">
+          <div data-reveal="" data-figure-row="" style="display: grid; grid-template-columns: 70% 1fr; gap: 32px; align-items: start;">
+            <video src="uploads/portfolio_clip_8.mp4" autoplay="{{ true }}" loop="{{ true }}" muted="{{ true }}" playsinline="{{ true }}" style="display: block; width: 100%; height: auto; border-radius: 6px; border: 0.5px solid #d0d6da; background: #f2f1ef;"></video>
+            <p style="margin: 0; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; line-height: 1.5; letter-spacing: 0; text-align: left; color: #FE4EDC;">Figma's responsive layout showing columns collapsing into accordions on mobile</p>
+          </div>
+        <p data-reveal="" style="margin: 0; font-size: clamp(16px, 1.5vw, 20px); line-height: 1.7; letter-spacing: -0.02em; text-wrap: pretty;">Common patterns I observed:</p>
+        <ul data-reveal="" style="margin: 24px 0 32px; padding-left: 24px; list-style: disc; font-size: clamp(16px, 1.5vw, 20px); line-height: 1.6; letter-spacing: -0.02em; text-align: left; text-wrap: pretty;">
+          <li style="margin: 0 0 24px;">Plan overviews and CTAs at the top</li>
+          <li style="margin: 0 0 24px;">Price as the most prominent text element</li>
+          <li style="margin: 0 0 24px;">Maximum of 4 columns to avoid cognitive overload</li>
+          <li style="margin: 0;">Columns collapsing into accordions on mobile</li>
+        </ul>
+        </div>
+        <h3 data-reveal="" style="margin: 64px 0 32px; font-size: clamp(20px, 2.4vw, 32px); line-height: 1.2; letter-spacing: -0.03em; text-wrap: pretty;">Current system audit</h3>
+        <p data-reveal="" style="margin: 0; font-size: clamp(16px, 1.5vw, 20px); line-height: 1.7; letter-spacing: -0.02em; text-wrap: pretty;">I audited our existing design system to identify similar layout patterns and understand constraints around padding, spacing, and responsive behavior. Our 'Related Resource 1' layout established how 4 columns should transition across breakpoints and provided a foundation for the pricing layout.</p>
+        <div data-reveal="" style="margin: 48px 0;">
+          <div data-reveal="" data-figure-row="" style="display: grid; grid-template-columns: 70% 1fr; gap: 32px; align-items: start;">
+            <img src="uploads/Screenshot-2025-09-29-at-1.42.38PM.png" alt="Related Resource 1 layout showing responsive behavior across breakpoints" style="display: block; width: 100%; height: auto; border-radius: 6px; border: 0.5px solid #d0d6da; background: #f2f1ef;">
+            <p style="margin: 0; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; line-height: 1.5; letter-spacing: 0; text-align: left; color: #FE4EDC;">Related Resource 1 layout showing responsive behavior across breakpoints</p>
+          </div>
+        </div>
+        <h3 data-reveal="" style="margin: 64px 0 32px; font-size: clamp(20px, 2.4vw, 32px); line-height: 1.2; letter-spacing: -0.03em; text-wrap: pretty;">Initial concepts</h3>
+        <p data-reveal="" style="margin: 0; font-size: clamp(16px, 1.5vw, 20px); line-height: 1.7; letter-spacing: -0.02em; text-wrap: pretty;">My first designs followed research patterns, then adapted them to our needs. I started with CTAs after plan overviews, then added a bottom CTA option to match existing user expectations. I also shifted from center to left alignment for better readability with feature-heavy content.</p>
+        <div data-reveal="" style="margin: 48px 0;">
+          <div data-reveal="" data-figure-row="" style="display: grid; grid-template-columns: 70% 1fr; gap: 32px; align-items: start;">
+            <img src="uploads/ScreensizeDesktop.png" alt="Initial concept with center-aligned content and CTAs after plan overviews" style="display: block; width: 100%; height: auto; border-radius: 6px; border: 0.5px solid #d0d6da; background: #f2f1ef;">
+            <p style="margin: 0; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; line-height: 1.5; letter-spacing: 0; text-align: left; color: #FE4EDC;">Initial concept with center-aligned content and CTAs after plan overviews</p>
+          </div>
+        </div>
+        <h3 data-reveal="" style="margin: 64px 0 32px; font-size: clamp(20px, 2.4vw, 32px); line-height: 1.2; letter-spacing: -0.03em; text-wrap: pretty;">Developer handoff</h3>
+        <p data-reveal="" style="margin: 0; font-size: clamp(16px, 1.5vw, 20px); line-height: 1.7; letter-spacing: -0.02em; text-wrap: pretty;">After finalizing designs with our Director of Creative Services, I created a detailed Jira ticket outlining technical requirements, layout specifications, responsive behavior, and backend content entry steps for our external development team.</p>
+        <div data-reveal="" style="margin: 48px 0;">
+          <img src="uploads/jira.fico.com_browse_FDI-2485.png" alt="Jira ticket detailing layout requirements, responsive behavior, and backend content entry steps" style="display: block; width: 100%; height: auto; border-radius: 6px; border: 0.5px solid #d0d6da; background: #f2f1ef;">
+        </div>
+        <h2 data-reveal="" style="margin: 160px 0 32px; font-size: clamp(24px, 3.4vw, 44px); line-height: 1.1; letter-spacing: -0.04em; text-wrap: pretty;">What we shipped</h2>
+        <p data-reveal="" style="margin: 0; font-size: clamp(16px, 1.5vw, 20px); line-height: 1.7; letter-spacing: -0.02em; text-wrap: pretty;">I rebuilt the Xpress Trial and Licensing Options page in Drupal using the new pricing layout, collaborating with the Directors of Product Marketing and SEO to align copy with business goals.</p>
+        <div data-reveal="" style="margin: 48px 0;">
+          <div data-reveal="" data-figure-row="" style="display: grid; grid-template-columns: 70% 1fr; gap: 32px; align-items: start;">
+            <img src="uploads/www.fico.com_en_fico-xpress-trial-and-licensing-options-26.png" alt="Final pricing layout with updated branding and content" style="display: block; width: 100%; height: auto; border-radius: 6px; border: 0.5px solid #d0d6da; background: #f2f1ef;">
+            <p style="margin: 0; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; line-height: 1.5; letter-spacing: 0; text-align: left; color: #FE4EDC;">Final pricing layout with updated branding and content</p>
+          </div>
+        </div>
+        <h3 data-reveal="" style="margin: 64px 0 32px; font-size: clamp(20px, 2.4vw, 32px); line-height: 1.2; letter-spacing: -0.03em; text-wrap: pretty;">Key design decisions</h3>
+        <p data-reveal="" style="margin: 0; font-size: clamp(16px, 1.5vw, 20px); line-height: 1.7; letter-spacing: -0.02em; text-wrap: pretty;">The layout supports both top and bottom CTA placements. We used bottom placement for this page to let users review all licensing information before acting, which is important for complex B2B decisions.</p>
+        <h3 data-reveal="" style="margin: 64px 0 32px; font-size: clamp(20px, 2.4vw, 32px); line-height: 1.2; letter-spacing: -0.03em; text-wrap: pretty;">Responsive behavior</h3>
+        <p data-reveal="" style="margin: 0; font-size: clamp(16px, 1.5vw, 20px); line-height: 1.7; letter-spacing: -0.02em; text-wrap: pretty;">On smaller desktops, 4 columns reorganize into a 2x2 grid. On tablet and mobile, columns collapse into accordions to reduce cognitive load.</p>
+        <div data-reveal="" style="margin: 48px 0;">
+          <img src="uploads/Tablet-and-Mobile-Comparison.png" alt="Tablet and mobile comparison of the pricing layout" style="display: block; width: 100%; height: auto; border-radius: 6px; border: 0.5px solid #d0d6da; background: #f2f1ef;">
+        </div>
+        <h2 data-reveal="" style="margin: 160px 0 32px; font-size: clamp(24px, 3.4vw, 44px); line-height: 1.1; letter-spacing: -0.04em; text-wrap: pretty;">Results &amp; impact</h2>
+        <h3 data-reveal="" style="margin: 64px 0 32px; font-size: clamp(20px, 2.4vw, 32px); line-height: 1.2; letter-spacing: -0.03em; text-wrap: pretty;">Design system contribution</h3>
+        <p data-reveal="" style="margin: 0; font-size: clamp(16px, 1.5vw, 20px); line-height: 1.7; letter-spacing: -0.02em; text-wrap: pretty;">The pricing layout was added to FICO's design system, supporting 1-4 columns, two content variants, and optional elements, reducing future design and development time across digital properties.</p>
+        <h3 data-reveal="" style="margin: 64px 0 32px; font-size: clamp(20px, 2.4vw, 32px); line-height: 1.2; letter-spacing: -0.03em; text-wrap: pretty;">Business outcomes</h3>
+        <p data-reveal="" style="margin: 0; font-size: clamp(16px, 1.5vw, 20px); line-height: 1.7; letter-spacing: -0.02em; text-wrap: pretty;">Content updates dropped from a 3-step process to a single step in Drupal, cutting update time by 60-70%. Removing iframed content improved SEO discoverability and enabled proper analytics tracking.</p>
+        <h3 data-reveal="" style="margin: 64px 0 32px; font-size: clamp(20px, 2.4vw, 32px); line-height: 1.2; letter-spacing: -0.03em; text-wrap: pretty;">User engagement</h3>
+        <p data-reveal="" style="margin: 0; font-size: clamp(16px, 1.5vw, 20px); line-height: 1.7; letter-spacing: -0.02em; text-wrap: pretty;">Heatmap and click data from launch week confirmed strong engagement with the pricing CTAs, validating our decisions around placement and content hierarchy.</p>
+        <div data-reveal="" style="margin: 48px 0;">
+          <img src="uploads/Screenshot-2025-10-15-at-2.52.36PM.png" alt="Heatmap overlay on the Xpress Optimization License options page" style="display: block; width: 100%; height: auto; border-radius: 6px; border: 0.5px solid #d0d6da; background: #f2f1ef;">
+        </div>
+        <div data-reveal="" style="margin: 48px 0;">
+          <img src="uploads/Screenshot-2025-10-06-at-1.17.16PM-1.png" alt="Click count analytics for the pricing page links" style="display: block; width: 100%; height: auto; border-radius: 6px; border: 0.5px solid #d0d6da; background: #f2f1ef;">
+        </div>
+        <h3 data-reveal="" style="margin: 64px 0 32px; font-size: clamp(20px, 2.4vw, 32px); line-height: 1.2; letter-spacing: -0.03em; text-wrap: pretty;">Lessons learned</h3>
+        <p data-reveal="" style="margin: 0; font-size: clamp(16px, 1.5vw, 20px); line-height: 1.7; letter-spacing: -0.02em; text-wrap: pretty;">Auditing the design system upfront prevented rework. Detailed Jira documentation made implementation smoother and the component easier for future content editors. Building in flexibility from the start allowed it to serve both immediate and future needs.</p>
+        <h3 data-reveal="" style="margin: 64px 0 32px; font-size: clamp(20px, 2.4vw, 32px); line-height: 1.2; letter-spacing: -0.03em; text-wrap: pretty;">Looking forward</h3>
+        <p data-reveal="" style="margin: 0; font-size: clamp(16px, 1.5vw, 20px); line-height: 1.7; letter-spacing: -0.02em; text-wrap: pretty;">As the component gets used across more pages, I'll gather feedback from content editors and monitor usage patterns. Involving developers earlier would help surface technical constraints during concepting rather than after finalization.</p>
+        </div>
+      </section>
+      </sc-if>
+    </div>
+  </sc-if>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;defaultView&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;about&quot;,&quot;work&quot;],&quot;default&quot;:&quot;about&quot;,&quot;tsType&quot;:&quot;'about' | 'work'&quot;},&quot;showThumbLabels&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+const PROJECTS = [
+  {
+    id: 'weather',
+    hasOverlay: true,
+    thumb: 'uploads/Thumbnail-4.png',
+    title: 'A weather site that matches the forecast to archival runway looks',
+    desc: 'Placeholder description line one, two sentences about the concept. Placeholder description line two about the build and what it taught me.',
+    slot: 'project thumbnail — 3:2'
+  },
+  {
+    id: 'ds',
+    hasOverlay: true,
+    thumb: 'uploads/Thumbnail-3.png',
+    title: 'Rebuilding design systems at FICO',
+    desc: 'Placeholder description line one about consolidating three component libraries. Placeholder description line two about adoption and governance.',
+    slot: 'project thumbnail — 3:2',
+    lede: 'Placeholder lede for the design systems case study — the problem, the constraint, and the outcome in one paragraph.'
+  },
+  {
+    id: 'shipped',
+    hasOverlay: true,
+    thumb: 'uploads/Thumbnail-5.png',
+    title: 'Shipped work at FICO',
+    desc: 'Placeholder description line one covering a range of shipped surfaces. Placeholder description line two on measurement and iteration.',
+    slot: 'project thumbnail — 3:2',
+    lede: 'Placeholder lede for the shipped work case study — a survey of features that made it to production between 2023 and 2026.'
+  },
+  {
+    id: 'pricing',
+    hasOverlay: true,
+    thumb: 'uploads/Thumbnail-2.png',
+    title: 'Designing a pricing comparison layout',
+    desc: 'Placeholder description line one about comparing five plans without a wall of checkmarks. Placeholder description line two on testing.',
+    slot: 'project thumbnail — 3:2',
+    lede: 'Placeholder lede for the pricing comparison case study — how a dense table became a scannable decision aid.'
+  }
+];
+
+const SECTIONS = [
+  {
+    heading: 'Context',
+    body: 'Placeholder body copy. Two or three sentences establishing the team, the timeline, and the state of things when the project started.',
+    body2: 'Placeholder secondary paragraph with the constraint that shaped every decision that followed.'
+  },
+  {
+    heading: 'Approach',
+    body: 'Placeholder body copy describing the process — audit, inventory, prototypes, and the review cadence that kept it moving.',
+    body2: 'Placeholder secondary paragraph on the tradeoff that was argued about the longest.'
+  },
+  {
+    heading: 'Outcome',
+    body: 'Placeholder body copy on what shipped, who adopted it, and what changed for the people using it.',
+    body2: 'Placeholder secondary paragraph on what I would do differently next time.'
+  }
+];
+
+const DS_META = [
+  { label: 'Role', value: 'UX Designer' },
+  { label: 'Team', value: 'Marketing (Creative Services)' },
+  { label: 'Company', value: 'FICO' },
+  { label: 'Timeline', value: '8 months' }
+];
+
+const PRICING_META = [
+  { label: 'Role', value: 'UX Designer' },
+  { label: 'Team', value: 'Marketing (Creative Services)' },
+  { label: 'Company', value: 'FICO' },
+  { label: 'Timeline', value: '3 months' }
+];
+
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { view: props.defaultView === 'work' ? 'work' : 'about', overlay: null, portrait: null, row: null };
+    this.savedScroll = 0;
+  }
+
+  canHover() {
+    return typeof window !== 'undefined' && window.matchMedia
+      && window.matchMedia('(hover: hover) and (pointer: fine)').matches
+      && window.matchMedia('(min-width: 900px)').matches;
+  }
+
+  componentDidMount() {
+    this._onResize = () => this.forceUpdate();
+    window.addEventListener('resize', this._onResize);
+    this.measureThumbs();
+    this._videoTimer = setInterval(() => this.primeVideos(), 1000);
+    this.primeVideos();
+    if (this.state.overlay) this.arm();
+  }
+
+  setupReveal() {
+    this._sweepOk = false;
+    if (this._teardownReveal) { this._teardownReveal(); this._teardownReveal = null; }
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return true;
+    const els = Array.from(document.querySelectorAll('[data-reveal]'));
+    if (!els.length) return false;
+    const scroller = els[0].closest('[data-overlay-scroll]');
+    if (!scroller) return false;
+
+    const order = new Map();
+    const revealEl = (el, i) => {
+      el.removeAttribute('data-reveal-pending');
+      setTimeout(() => el.classList.add('is-in'), Math.min(i, 5) * 80);
+    };
+    const inView = (el) => {
+      const r = el.getBoundingClientRect();
+      const s = scroller.getBoundingClientRect();
+      if (!r.height) return false;
+      const visible = Math.min(r.bottom, s.bottom) - Math.max(r.top, s.top);
+      return visible >= Math.min(r.height * 0.15, s.height);
+    };
+    els.forEach((el) => { if (!el.classList.contains('is-in')) el.setAttribute('data-reveal-pending', ''); });
+    let pending = els.slice();
+    const sweep = () => {
+      const hits = pending.filter(inView);
+      if (hits.length) {
+        hits.sort((a, b) => {
+          const ra = a.getBoundingClientRect(), rb = b.getBoundingClientRect();
+          return ra.top - rb.top || ra.left - rb.left;
+        });
+        hits.forEach((el, i) => revealEl(el, i));
+        pending = pending.filter((el) => hits.indexOf(el) === -1);
+      }
+      this._sweepOk = true;
+      if (!pending.length) {
+        scroller.removeEventListener('scroll', onScroll);
+        window.removeEventListener('resize', onScroll);
+      }
+    };
+    const onScroll = () => {
+      try { sweep(); } catch (err) { console.error('reveal sweep failed', (err && err.stack) || err); revealAll(); }
+    };
+    const revealAll = () => {
+      pending.forEach((el) => { el.removeAttribute('data-reveal-pending'); el.classList.add('is-in'); });
+      pending = [];
+      this._teardownReveal && this._teardownReveal();
+    };
+    this._teardownReveal = () => {
+      scroller.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+    };
+    scroller.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    scroller.setAttribute('data-reveal-live', '');
+    // sheet slides in over 500ms; sweep repeatedly until geometry settles
+    [0, 120, 320, 520, 620].forEach((t) => setTimeout(onScroll, t));
+    setTimeout(() => {
+      if (!this._sweepOk) revealAll();
+    }, 1400);
+    return true;
+  }
+
+  arm() {
+    if (this._armedOnce) return;
+    let tries = 0;
+    const go = () => {
+      if (this._armedOnce) return;
+      let ok = false;
+      try { ok = this.setupReveal(); } catch (err) { console.error('reveal setup failed', (err && err.stack) || err); ok = true; }
+      if (ok) { this._armedOnce = true; return; }
+      if (++tries > 30) return;
+      setTimeout(go, 50);
+    };
+    setTimeout(go, 0);
+  }
+
+  componentDidUpdate(prevProps, prevStateArg) {
+    const prevState = prevStateArg || {};
+
+    if (!prevState.overlay && this.state.overlay && !this.state.overlayIn && !this.reduced()) {
+      clearTimeout(this._openT);
+      this._openT = setTimeout(() => this.setState({ overlayIn: true }), 20);
+    }
+    const was = this._prevOverlay || null;
+    const now = this.state.overlay || null;
+    this._prevOverlay = now;
+    if (!was && now) {
+      document.body.style.overflow = 'hidden';
+      document.documentElement.classList.add('overlay-open');
+      document.body.classList.add('overlay-open');
+      document.documentElement.style.overscrollBehavior = 'none';
+      document.body.style.overscrollBehavior = 'none';
+      this.arm();
+    } else if (was && !now) {
+      this.unlockScroll();
+    }
+  }
+
+  componentWillUnmount() {
+    document.body.style.overflow = '';
+    if (this._onResize) window.removeEventListener('resize', this._onResize);
+    clearInterval(this._videoTimer);
+  }
+
+  reduced() {
+    return typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  }
+
+  open(p) {
+    return (e) => {
+      e.preventDefault();
+      if (!p.hasOverlay) return;
+      this.savedScroll = window.scrollY;
+      clearTimeout(this._closeT);
+      this.setState({ overlay: p, overlayIn: this.reduced(), closing: false });
+    };
+  }
+
+
+  measureThumbs() {
+    PROJECTS.forEach((p) => {
+      if (!p.thumb) return;
+      const img = new Image();
+      img.onload = () => {
+        if (!img.naturalWidth || !img.naturalHeight) return;
+        this._ratios = this._ratios || {};
+        this._ratios[p.id] = img.naturalWidth + ' / ' + img.naturalHeight;
+        this.forceUpdate();
+      };
+      img.src = p.thumb;
+    });
+  }
+
+  primeVideos() {
+    document.querySelectorAll('video').forEach((v) => {
+      v.loop = true;
+      v.muted = true;
+      v.defaultMuted = true;
+      v.setAttribute('loop', '');
+      v.setAttribute('muted', '');
+      if (!v.dataset.loopBound) {
+        v.dataset.loopBound = '1';
+        const replay = () => { const p = v.play(); if (p && p.catch) p.catch(() => {}); };
+        v.addEventListener('ended', () => { v.currentTime = 0; replay(); });
+        v.addEventListener('pause', () => { if (!document.hidden) replay(); });
+      }
+      const p = v.play();
+      if (p && p.catch) p.catch(() => {});
+    });
+  }
+
+  unlockScroll() {
+    document.documentElement.classList.remove('overlay-open');
+    document.body.classList.remove('overlay-open');
+    document.documentElement.style.overscrollBehavior = '';
+    document.body.style.overscrollBehavior = '';
+    document.body.style.overflow = '';
+    window.scrollTo(0, this.savedScroll);
+  }
+
+  submitPw() {
+    this._unlockedIds = this._unlockedIds || {};
+    if ((this.state.pw || '').trim().toLowerCase() === 'mayafico') {
+      this._unlockedIds[(this.state.overlay || {}).id] = true;
+      this.setState({ pw: '', pwError: false }, () => { this._armedOnce = false; this.arm(); });
+    } else {
+      this.setState({ pwError: true });
+    }
+  }
+
+  close() {
+    if (this.state.closing) return;
+    this._armedOnce = false;
+    if (this._teardownReveal) { this._teardownReveal(); this._teardownReveal = null; }
+    if (this.reduced()) { this.setState({ overlay: null, overlayIn: false, closing: false }); return; }
+    this.setState({ closing: true });
+    clearTimeout(this._closeT);
+    this._closeT = setTimeout(() => this.setState({ overlay: null, overlayIn: false, closing: false }), 420);
+  }
+
+  tabStyle(active) {
+    return {
+      appearance: 'none',
+      border: 'none',
+      borderRadius: '999px',
+      height: '44px',
+      padding: '0 16px',
+      fontFamily: "'IBM Plex Mono', ui-monospace, monospace",
+      fontSize: '12px',
+      lineHeight: 1.5,
+      letterSpacing: '0.02em',
+      textTransform: 'uppercase',
+      cursor: 'pointer',
+      background: 'transparent',
+      position: 'relative',
+      zIndex: 1,
+      flex: '1 1 0',
+      minWidth: '78px',
+      color: active ? '#ffffff' : '#1f1f1f',
+      opacity: active ? 1 : 0.4,
+      transition: 'color 200ms ease, opacity 200ms ease'
+    };
+  }
+
+  pillStyle(isWork) {
+    return {
+      position: 'absolute',
+      top: '3px',
+      left: '3px',
+      right: '3px',
+      bottom: '3px',
+      width: 'calc(50% - 3px)',
+      borderRadius: '999px',
+      background: '#1f1f1f',
+      transform: isWork ? 'translateX(100%)' : 'translateX(0)',
+      transition: this.reduced() ? 'none' : 'transform 400ms cubic-bezier(0.34, 1.56, 0.64, 1)',
+      pointerEvents: 'none'
+    };
+  }
+
+  sheetStyles(open, closing) {
+    const r = this.reduced();
+    return {
+      backdropStyle: {
+        position: 'fixed',
+        inset: 0,
+        zIndex: 55,
+        background: 'rgba(0,0,0,0.4)',
+        opacity: 1,
+        pointerEvents: 'none',
+        ...(closing
+          ? { animation: 'none', opacity: 0, transition: r ? 'none' : 'opacity 400ms ease-in' }
+          : { animation: r ? 'none' : 'dim-in 500ms ease-out both' })
+      },
+      sheetUnderlayStyle: {
+        position: 'fixed',
+        top: '32px',
+        left: 0,
+        right: 0,
+        bottom: 0,
+        zIndex: 56,
+        background: '#ffffff',
+        borderTopLeftRadius: '16px',
+        borderTopRightRadius: '16px',
+        pointerEvents: 'none',
+        ...(closing
+          ? { animation: 'none', transform: 'translateY(100%)', transition: r ? 'none' : 'transform 400ms ease-in' }
+          : { animation: r ? 'none' : 'sheet-in 500ms ease-out both' })
+      },
+      sheetStyle: {
+        position: 'fixed',
+        top: '32px',
+        left: 0,
+        right: 0,
+        bottom: 0,
+        zIndex: 60,
+        background: '#ffffff',
+        color: '#1f1f1f',
+        fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif",
+        letterSpacing: '-0.03em',
+        borderTopLeftRadius: '16px',
+        borderTopRightRadius: '16px',
+        overflowY: 'auto',
+        overscrollBehavior: 'none',
+        WebkitOverflowScrolling: 'touch',
+        ...(closing
+          ? { animation: 'none', transform: 'translateY(100%)', transition: r ? 'none' : 'transform 400ms ease-in' }
+          : { animation: r ? 'none' : 'sheet-in 500ms ease-out both' })
+      }
+    };
+  }
+
+  renderVals() {
+    const { view, overlay, portrait, row } = this.state;
+    this._unlockedIds = this._unlockedIds || {};
+    if (overlay && !this._armed) { this._armed = true; this.arm(); }
+    /* reveal armed via render */
+    if (!overlay) this._armed = false;
+    const showLabels = this.props.showThumbLabels ?? true;
+    const hoverCapable = this.canHover();
+    const enter = () => {
+      if (!hoverCapable) return;
+      if (this._portraitSpot === undefined) this._portraitSpot = -1;
+      this._portraitSpot = (this._portraitSpot + 1) % 3;
+      this.setState({ portrait: { pos: this._portraitSpot, on: false } });
+      requestAnimationFrame(() => requestAnimationFrame(() => this.setState((s) => (s.portrait ? { portrait: { ...s.portrait, on: true } } : null))));
+    };
+    return {
+      isAbout: view === 'about',
+      isWork: view === 'work',
+      showAbout: () => { this.setState({ view: 'about', portrait: null, row: null }); window.scrollTo(0, 0); },
+      showWork: () => { this.setState({ view: 'work', portrait: null, row: null }); window.scrollTo(0, 0); },
+      aboutTabStyle: this.tabStyle(view === 'about'),
+      workTabStyle: this.tabStyle(view === 'work'),
+      pillStyle: this.pillStyle(view === 'work'),
+      pinnedStyle: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        gap: '32px',
+        padding: '14px var(--pad)',
+        background: 'transparent'
+      },
+      ...this.sheetStyles(!!this.state.overlayIn, !!this.state.closing),
+      nameEnter: enter,
+      nameLeave: () => this.setState((s) => (s.portrait ? { portrait: { ...s.portrait, on: false } } : null)),
+      hoverCapable: hoverCapable,
+      portraitStyle: (() => {
+        const on = view === 'about' && portrait && portrait.on;
+        return {
+          position: 'fixed',
+          zIndex: 40,
+          pointerEvents: 'none',
+          ...[
+            { top: '16vh', right: 'max(var(--pad), 5vw)' },
+            { bottom: '18vh', right: 'max(var(--pad), 10vw)' },
+            { top: '38vh', left: 'max(var(--pad), 4vw)' }
+          ][portrait && portrait.pos ? portrait.pos % 3 : 0],
+          opacity: on ? 1 : 0,
+          visibility: on ? 'visible' : 'hidden',
+          transition: 'opacity 250ms ease, visibility 0s linear ' + (on ? '0s' : '250ms')
+        };
+      })(),
+      projects: PROJECTS.map((p, i) => ({
+        ...p,
+        num: '0' + (i + 1) + '.',
+        slot: showLabels ? p.slot : '',
+        href: p.external ? p.href : undefined,
+        target: p.external ? '_blank' : undefined,
+        rel: p.external ? 'noopener noreferrer' : undefined,
+        onClick: p.external ? undefined : (p.hasOverlay ? this.open(p) : (e) => e.preventDefault()),
+        inlineThumbStyle: {
+          width: '100%',
+          maxWidth: '520px',
+          aspectRatio: (this._ratios && this._ratios[p.id]) || '3 / 2',
+          marginTop: '24px',
+          border: '1px solid #d0d6da',
+          borderRadius: '6px',
+          boxSizing: 'border-box',
+          backgroundColor: '#ffffff',
+          backgroundImage: p.thumb ? 'url("' + p.thumb + '")' : 'repeating-linear-gradient(135deg, #eae8e4 0 10px, #f2f1ef 10px 20px)',
+          backgroundSize: p.thumb ? 'contain' : 'auto',
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'center'
+        },
+        rowStyle: {
+          display: 'block',
+          fontSize: 'var(--display)',
+          lineHeight: 1.05,
+          letterSpacing: '-0.05em',
+          cursor: p.external || p.hasOverlay ? 'pointer' : 'default',
+          color: '#1f1f1f',
+          textWrap: 'pretty'
+        },
+        onEnter: hoverCapable ? () => {
+          this.setState({ row: { i, on: false } });
+          requestAnimationFrame(() => requestAnimationFrame(() => this.setState((s) => (s.row && s.row.i === i ? { row: { ...s.row, on: true } } : null))));
+        } : undefined,
+        onLeave: hoverCapable ? () => this.setState((s) => (s.row && s.row.i === i ? { row: { ...s.row, on: false } } : null)) : undefined
+      })),
+      isWeatherOverlay: !!overlay && overlay.id === 'weather',
+      isShippedOverlay: !!overlay && overlay.id === 'shipped',
+      hasOverlay: !!overlay,
+      pwValue: this.state.pw || '',
+      pwError: !!this.state.pwError,
+      onPwChange: (e) => this.setState({ pw: e.target.value, pwError: false }),
+      onPwKey: (e) => { if (e.key === 'Enter') this.submitPw(); },
+      onPwSubmit: () => this.submitPw(),
+      isDsLocked: !!overlay && overlay.id === 'ds' && !this._unlockedIds[overlay.id],
+      isDsUnlocked: !!overlay && overlay.id === 'ds' && !!this._unlockedIds[overlay.id],
+      isPricingLocked: !!overlay && overlay.id === 'pricing' && !this._unlockedIds[overlay.id],
+      isPricingUnlocked: !!overlay && overlay.id === 'pricing' && !!this._unlockedIds[overlay.id],
+      isShippedLocked: !!overlay && overlay.id === 'shipped' && !this._unlockedIds[overlay.id],
+      isShippedUnlocked: !!overlay && overlay.id === 'shipped' && !!this._unlockedIds[overlay.id],
+      isDsOverlay: !!overlay && overlay.id === 'ds',
+      isPricingOverlay: !!overlay && overlay.id === 'pricing',
+      pricingMeta: PRICING_META.map((m) => ({
+        ...m,
+        valueStyle: { fontSize: 'clamp(16px, 1.5vw, 20px)', lineHeight: 1.7, letterSpacing: '-0.02em', textWrap: 'pretty', whiteSpace: 'pre-line' }
+      })),
+      isGenericOverlay: !!overlay && ['ds', 'pricing', 'weather', 'shipped'].indexOf(overlay.id) === -1,
+      dsMeta: DS_META.map((m, i) => ({
+        ...m,
+        showCue: i === 1,
+        valueStyle: { fontSize: 'clamp(16px, 1.5vw, 20px)', lineHeight: 1.7, letterSpacing: '-0.02em', textWrap: 'pretty', whiteSpace: 'pre-line' }
+      })),
+      overlayTitle: overlay ? overlay.title : '',
+      overlayLede: overlay ? overlay.lede : '',
+      overlayHeroSlot: showLabels ? 'hero image — 16:9' : '',
+      overlaySections: SECTIONS,
+      closeOverlay: () => this.close(),
+      scrollToContent: () => {
+        const sheet = document.querySelector('[data-overlay-scroll]');
+        if (!sheet) return;
+        const secs = sheet.querySelectorAll('section');
+        const target = secs[1];
+        if (!target) return;
+        const top = target.offsetParent === sheet
+          ? target.offsetTop
+          : sheet.scrollTop + (target.getBoundingClientRect().top - sheet.getBoundingClientRect().top);
+        sheet.scrollTo({ top: top, behavior: 'smooth' });
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>
