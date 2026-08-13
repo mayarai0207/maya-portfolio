@@ -48,9 +48,14 @@ window.__resources = {
   /* match Work's toggle-to-content gap to About's */
   html.overlay-open, body.overlay-open { overscroll-behavior: none; overscroll-behavior-y: none; }
   @keyframes scroll-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
+  @keyframes sheet-out { from { transform: translateY(0); } to { transform: translateY(100%); } }
+  @keyframes dim-out { from { opacity: 1; } to { opacity: 0; } }
   @keyframes sheet-in { from { transform: translateY(100%); } to { transform: translateY(0); } }
   @keyframes dim-in { from { opacity: 0; } to { opacity: 1; } }
   @media (prefers-reduced-motion: reduce) { [data-overlay-scroll], [data-overlay-dim] { animation: none !important; } }
+  @media (max-width: 900px) { [data-maya] { animation: none !important; opacity: 1 !important; } }
+  [data-work-list] > div:last-of-type { margin-bottom: 0 !important; }
+  @media (max-width: 900px) { [data-pw-input] { font-size: 16px !important; height: 52px !important; padding: 0 22px !important; } }
   @keyframes maya-breath { 0%, 100% { opacity: 1; } 50% { opacity: 0.55; } }
   h1, h2, h3, h4 { font-weight: 400; }
   a { color: inherit; text-decoration: none; }
@@ -87,10 +92,10 @@ window.__resources = {
   </div>
 
   <sc-if value="{{ isAbout }}" hint-placeholder-val="{{ true }}">
-    <div style="display: flex; flex-direction: column; padding: 190px var(--pad) 72px; max-width: 1100px; margin: 0 auto;">
-      <div style="display: flex; flex-direction: column; align-items: center; padding: 0 0 96px; text-align: center;">
+    <div style="display: flex; flex-direction: column; padding: 138px var(--pad) 0; max-width: 1100px; margin: 0 auto;">
+      <div style="display: flex; flex-direction: column; align-items: center; padding: 0 0 64px; text-align: center;">
         <p data-about-p1="" style="margin: 0 0 32px; font-size: var(--display); line-height: 1.05; letter-spacing: -0.05em; text-wrap: pretty;">
-          Hi, I'm <span onMouseEnter="{{ nameEnter }}" onMouseLeave="{{ nameLeave }}" style="color: #FE4EDC; animation: maya-breath 4s ease-in-out infinite; cursor: default;">Maya</span>! Thanks for stopping by.
+          Hi, I'm <span data-maya="" onMouseEnter="{{ nameEnter }}" onMouseLeave="{{ nameLeave }}" style="color: #FE4EDC; animation: maya-breath 4s ease-in-out infinite; cursor: default;">Maya</span>!
         </p>
         <p data-about-p2="" style="margin: 0 0 32px; font-size: var(--display); line-height: 1.05; letter-spacing: -0.05em; text-wrap: pretty;">
           I'm a <span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-weight: 400; font-style: italic; letter-spacing: -0.09em;">Senior UX Designer</span> at FICO, where I build and scale our design system across 7+ digital properties. I also own our event design infrastructure, building end-to-end experiences for internal and external events.
@@ -103,7 +108,7 @@ window.__resources = {
   </sc-if>
 
   <sc-if value="{{ isWork }}" hint-placeholder-val="{{ false }}">
-    <div data-work-list="" style="max-width: 1100px; margin: 0 auto; padding: 190px var(--pad) 72px;">
+    <div data-work-list="" style="max-width: 1100px; margin: 0 auto; padding: 138px var(--pad) 64px;">
       <sc-for list="{{ projects }}" as="p" hint-placeholder-count="4">
         <div style="margin-bottom: 96px;">
           <a href="{{ p.href }}" target="{{ p.target }}" rel="{{ p.rel }}" onClick="{{ p.onClick }}" style="{{ p.rowStyle }}">
@@ -179,7 +184,7 @@ window.__resources = {
         <div style="max-width: 900px; margin: 0 auto; width: 100%; text-align: center;">
           <p style="margin: 0 0 48px; font-size: clamp(16px, 1.5vw, 20px); line-height: 1.7; letter-spacing: -0.02em; text-wrap: pretty;">This work is password protected</p>
           <div style="display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; align-items: center;">
-            <input type="password" value="{{ pwValue }}" onChange="{{ onPwChange }}" onKeyDown="{{ onPwKey }}" placeholder="PASSWORD" aria-label="Password" style="font-family: 'IBM Plex Mono', ui-monospace, monospace; height: 48px; padding: 0 20px; border: 1px solid #1f1f1f; border-radius: 999px; background: transparent; color: #1f1f1f; font-size: 12px; letter-spacing: 0.02em; line-height: 1.5; outline: none; min-width: 220px;">
+            <input data-pw-input="" type="password" value="{{ pwValue }}" onChange="{{ onPwChange }}" onKeyDown="{{ onPwKey }}" placeholder="PASSWORD" aria-label="Password" style="font-family: 'IBM Plex Mono', ui-monospace, monospace; height: 48px; padding: 0 20px; border: 1px solid #1f1f1f; border-radius: 999px; background: transparent; color: #1f1f1f; font-size: 12px; letter-spacing: 0.02em; line-height: 1.5; outline: none; min-width: 220px;">
             <button onClick="{{ onPwSubmit }}" style="font-family: 'IBM Plex Mono', ui-monospace, monospace; display: inline-flex; align-items: center; height: 48px; padding: 0 24px; border: none; border-radius: 999px; background: #1f1f1f; color: #ffffff; font-size: 12px; letter-spacing: 0.02em; text-transform: uppercase; line-height: 1.5; cursor: pointer;">Enter</button>
           </div>
           <sc-if value="{{ pwError }}" hint-placeholder-val="{{ false }}">
@@ -205,28 +210,28 @@ window.__resources = {
           <h2 data-reveal="" style="margin: 0 0 32px; font-size: clamp(24px, 3.4vw, 44px); line-height: 1.1; letter-spacing: -0.04em; text-wrap: pretty;">UltraFICO Score</h2>
           <p data-reveal="" style="margin: 0 0 48px; font-size: clamp(16px, 1.5vw, 20px); line-height: 1.7; letter-spacing: -0.02em; text-wrap: pretty;">In May 2026, I redesigned the UltraFICO Score consumer page on FICO.com as part of the product’s General Availability launch. Working alongside the Scores product, legal, and creative teams, I updated the layout, messaging, imagery, and components to reflect the next-generation positioning of the score.</p>
           <div data-reveal="" data-figure-full="" style="display: block;">
-            <video src="uploads/portfolio_clip_4.mp4" autoplay="{{ true }}" loop="{{ true }}" muted="{{ true }}" playsinline="{{ true }}" style="display: block; width: 100%; height: auto; border-radius: 6px; border: 0.5px solid #d0d6da; background: #f2f1ef;"></video>
+            <video src="uploads/portfolio_clip_4.mp4" autoplay="{{ true }}" loop="{{ true }}" muted="{{ true }}" playsinline="{{ true }}" style="display: block; width: 100%; height: auto; border-radius: 6px; border: 0.5px solid #d0d6da; background: #f2f1ef;" disablePictureInPicture="{{ true }}" controlsList="nodownload noplaybackrate"></video>
           </div>
         </div>
         <div data-reveal="" style="margin: 160px 0 0;">
           <h2 data-reveal="" style="margin: 0 0 32px; font-size: clamp(24px, 3.4vw, 44px); line-height: 1.1; letter-spacing: -0.04em; text-wrap: pretty;">FICO Score Credit Insights Report</h2>
           <p data-reveal="" style="margin: 0 0 48px; font-size: clamp(16px, 1.5vw, 20px); line-height: 1.7; letter-spacing: -0.02em; text-wrap: pretty;">I designed and launched the landing page for FICO’s inaugural Credit Insights Report in September 2025, supporting a press announcement covered by 3 major media outlets and integrated across paid campaigns, webinars, and events. The page has since been updated to support the 2026 report, establishing it as a recurring biannual destination for lenders and media.</p>
           <div data-reveal="" data-figure-full="" style="display: block;">
-            <video src="uploads/portfolio_clip_7.mp4" autoplay="{{ true }}" loop="{{ true }}" muted="{{ true }}" playsinline="{{ true }}" style="display: block; width: 100%; height: auto; border-radius: 6px; border: 0.5px solid #d0d6da; background: #f2f1ef;"></video>
+            <video src="uploads/portfolio_clip_7.mp4" autoplay="{{ true }}" loop="{{ true }}" muted="{{ true }}" playsinline="{{ true }}" style="display: block; width: 100%; height: auto; border-radius: 6px; border: 0.5px solid #d0d6da; background: #f2f1ef;" disablePictureInPicture="{{ true }}" controlsList="nodownload noplaybackrate"></video>
           </div>
         </div>
         <div data-reveal="" style="margin: 160px 0 0;">
           <h2 data-reveal="" style="margin: 0 0 32px; font-size: clamp(24px, 3.4vw, 44px); line-height: 1.1; letter-spacing: -0.04em; text-wrap: pretty;">FICO World 26</h2>
           <p data-reveal="" style="margin: 0 0 48px; font-size: clamp(16px, 1.5vw, 20px); line-height: 1.7; letter-spacing: -0.02em; text-wrap: pretty;">I owned the design and build of the FICO World 2026 registration site in Cvent, maintaining consistent branding across all pages through the day of the event. The experience drove 1,996 registrations and a 93.9% attendee conversion rate. I’ve owned this experience since 2024 and continue to evolve it each year.</p>
           <div data-reveal="" data-figure-full="" style="display: block;">
-            <video src="uploads/portfolio_clip_6.mp4" autoplay="{{ true }}" loop="{{ true }}" muted="{{ true }}" playsinline="{{ true }}" style="display: block; width: 100%; height: auto; border-radius: 6px; border: 0.5px solid #d0d6da; background: #f2f1ef;"></video>
+            <video src="uploads/portfolio_clip_6.mp4" autoplay="{{ true }}" loop="{{ true }}" muted="{{ true }}" playsinline="{{ true }}" style="display: block; width: 100%; height: auto; border-radius: 6px; border: 0.5px solid #d0d6da; background: #f2f1ef;" disablePictureInPicture="{{ true }}" controlsList="nodownload noplaybackrate"></video>
           </div>
         </div>
         <div data-reveal="" style="margin: 160px 0 0;">
           <h2 data-reveal="" style="margin: 0 0 32px; font-size: clamp(24px, 3.4vw, 44px); line-height: 1.1; letter-spacing: -0.04em; text-wrap: pretty;">Lloyds Banking Group Microsite</h2>
           <p data-reveal="" style="margin: 0 0 48px; font-size: clamp(16px, 1.5vw, 20px); line-height: 1.7; letter-spacing: -0.02em; text-wrap: pretty;">I designed and built a dedicated microsite for Lloyds Banking Group as part of FICO’s Account-Based Marketing program. The site serves as a fully branded digital hub tailored to LBG’s strategic priorities, supporting C-suite engagement and serving as the central destination for all account engagement plays. I received a Spot Award for my contribution to the ABM microsite program.</p>
           <div data-reveal="" data-figure-full="" style="display: block;">
-            <video src="uploads/portfolio_clip_5.mp4" autoplay="{{ true }}" loop="{{ true }}" muted="{{ true }}" playsinline="{{ true }}" style="display: block; width: 100%; height: auto; border-radius: 6px; border: 0.5px solid #d0d6da; background: #f2f1ef;"></video>
+            <video src="uploads/portfolio_clip_5.mp4" autoplay="{{ true }}" loop="{{ true }}" muted="{{ true }}" playsinline="{{ true }}" style="display: block; width: 100%; height: auto; border-radius: 6px; border: 0.5px solid #d0d6da; background: #f2f1ef;" disablePictureInPicture="{{ true }}" controlsList="nodownload noplaybackrate"></video>
           </div>
         </div>
         </div>
@@ -248,7 +253,7 @@ window.__resources = {
         <div style="max-width: 900px; margin: 0 auto; width: 100%; text-align: center;">
           <p style="margin: 0 0 48px; font-size: clamp(16px, 1.5vw, 20px); line-height: 1.7; letter-spacing: -0.02em; text-wrap: pretty;">This work is password protected</p>
           <div style="display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; align-items: center;">
-            <input type="password" value="{{ pwValue }}" onChange="{{ onPwChange }}" onKeyDown="{{ onPwKey }}" placeholder="PASSWORD" aria-label="Password" style="font-family: 'IBM Plex Mono', ui-monospace, monospace; height: 48px; padding: 0 20px; border: 1px solid #1f1f1f; border-radius: 999px; background: transparent; color: #1f1f1f; font-size: 12px; letter-spacing: 0.02em; line-height: 1.5; outline: none; min-width: 220px;">
+            <input data-pw-input="" type="password" value="{{ pwValue }}" onChange="{{ onPwChange }}" onKeyDown="{{ onPwKey }}" placeholder="PASSWORD" aria-label="Password" style="font-family: 'IBM Plex Mono', ui-monospace, monospace; height: 48px; padding: 0 20px; border: 1px solid #1f1f1f; border-radius: 999px; background: transparent; color: #1f1f1f; font-size: 12px; letter-spacing: 0.02em; line-height: 1.5; outline: none; min-width: 220px;">
             <button onClick="{{ onPwSubmit }}" style="font-family: 'IBM Plex Mono', ui-monospace, monospace; display: inline-flex; align-items: center; height: 48px; padding: 0 24px; border: none; border-radius: 999px; background: #1f1f1f; color: #ffffff; font-size: 12px; letter-spacing: 0.02em; text-transform: uppercase; line-height: 1.5; cursor: pointer;">Enter</button>
           </div>
           <sc-if value="{{ pwError }}" hint-placeholder-val="{{ false }}">
@@ -261,7 +266,7 @@ window.__resources = {
       <section style="background: #EAEEFE; color: #1f1f1f; padding: 96px var(--pad); box-sizing: border-box; min-height: calc(100vh - 32px); display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative;">
         <div style="max-width: 1100px; margin: 0 auto; width: 100%;">
           <p style="margin: 0; font-size: var(--display); line-height: 1.05; letter-spacing: -0.05em; text-align: center; text-wrap: pretty;">How I <span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-weight: 400; font-style: italic; letter-spacing: -0.09em;">rebuilt</span> FICO's design system from 200 to 400 components, cutting page-building time by 60% across 7+ digital properties.</p>
-          <div style="height: 1px; background: #d0d6da; width: 100%; margin: 96px 0 0;"></div>
+          <div style="height: 1px; background: #d0d6da; width: 100%; margin: 64px 0 0;"></div>
           <div data-stats-row="" data-stats-center="" style="display: flex; justify-content: space-between; align-items: flex-start; gap: 32px; padding-top: 32px; width: 100%; text-align: left;">
             <sc-for list="{{ dsMeta }}" as="m" hint-placeholder-count="3">
               <div style="display: flex; flex-direction: column; gap: 8px; min-width: 0; overflow-wrap: anywhere;">
@@ -355,13 +360,13 @@ window.__resources = {
         <p data-reveal="" style="margin: 48px 0 0; font-size: clamp(16px, 1.5vw, 20px); line-height: 1.7; letter-spacing: -0.02em; text-wrap: pretty;">Components were made responsive using auto-layout, allowing them to be used across various devices.</p>
         <div data-reveal="" style="margin: 48px 0;">
           <div data-reveal="" data-figure-full="" style="display: block;">
-            <video src="uploads/portfolio_clip_1.mp4" autoplay="{{ true }}" loop="{{ true }}" muted="{{ true }}" playsinline="{{ true }}" style="display: block; width: 100%; height: auto; border-radius: 6px; border: 0.5px solid #d0d6da; background: #f2f1ef;"></video>
+            <video src="uploads/portfolio_clip_1.mp4" autoplay="{{ true }}" loop="{{ true }}" muted="{{ true }}" playsinline="{{ true }}" style="display: block; width: 100%; height: auto; border-radius: 6px; border: 0.5px solid #d0d6da; background: #f2f1ef;" disablePictureInPicture="{{ true }}" controlsList="nodownload noplaybackrate"></video>
           </div>
         </div>
         <p data-reveal="" style="margin: 0 0 0px; font-size: clamp(16px, 1.5vw, 20px); line-height: 1.7; letter-spacing: -0.02em; text-wrap: pretty;">We used Figma's variants feature to combine different states of components with custom properties, making them easier to maintain and swap.</p>
         <div data-reveal="" style="margin: 48px 0;">
           <div data-reveal="" data-figure-full="" style="display: block;">
-            <video src="uploads/portfolio_clip_2.mp4" autoplay="{{ true }}" loop="{{ true }}" muted="{{ true }}" playsinline="{{ true }}" style="display: block; width: 100%; height: auto; border-radius: 6px; border: 0.5px solid #d0d6da; background: #f2f1ef;"></video>
+            <video src="uploads/portfolio_clip_2.mp4" autoplay="{{ true }}" loop="{{ true }}" muted="{{ true }}" playsinline="{{ true }}" style="display: block; width: 100%; height: auto; border-radius: 6px; border: 0.5px solid #d0d6da; background: #f2f1ef;" disablePictureInPicture="{{ true }}" controlsList="nodownload noplaybackrate"></video>
           </div>
         </div>
         <p data-reveal="" style="margin: 0 0 0px; font-size: clamp(16px, 1.5vw, 20px); line-height: 1.7; letter-spacing: -0.02em; text-wrap: pretty;">We also implemented design tokens using Figma's variable feature for our colors, typography, and spacing values, enabling seamless switching between different contexts, such as light and dark modes.</p>
@@ -415,7 +420,7 @@ window.__resources = {
             <p style="margin: 0; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; line-height: 1.5; letter-spacing: 0; text-align: left; color: #FE4EDC;">Before: Our singular previous layout option for related resources</p>
           </div>
           <div data-reveal="" data-figure-row="" style="display: grid; grid-template-columns: 70% 1fr; gap: 32px; align-items: start; margin-top: 24px;">
-            <video src="uploads/portfolio_clip_3.mp4" autoplay="{{ true }}" loop="{{ true }}" muted="{{ true }}" playsinline="{{ true }}" style="display: block; width: 100%; height: auto; border-radius: 6px; border: 0.5px solid #d0d6da; background: #f2f1ef;"></video>
+            <video src="uploads/portfolio_clip_3.mp4" autoplay="{{ true }}" loop="{{ true }}" muted="{{ true }}" playsinline="{{ true }}" style="display: block; width: 100%; height: auto; border-radius: 6px; border: 0.5px solid #d0d6da; background: #f2f1ef;" disablePictureInPicture="{{ true }}" controlsList="nodownload noplaybackrate"></video>
             <p style="margin: 0; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; line-height: 1.5; letter-spacing: 0; text-align: left; color: #FE4EDC;">After: One of four new layout options featuring human-centered imagery, subtle animation, and interactive elements</p>
           </div>
         </div>
@@ -443,7 +448,7 @@ window.__resources = {
         <div style="max-width: 900px; margin: 0 auto; width: 100%; text-align: center;">
           <p style="margin: 0 0 48px; font-size: clamp(16px, 1.5vw, 20px); line-height: 1.7; letter-spacing: -0.02em; text-wrap: pretty;">This work is password protected</p>
           <div style="display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; align-items: center;">
-            <input type="password" value="{{ pwValue }}" onChange="{{ onPwChange }}" onKeyDown="{{ onPwKey }}" placeholder="PASSWORD" aria-label="Password" style="font-family: 'IBM Plex Mono', ui-monospace, monospace; height: 48px; padding: 0 20px; border: 1px solid #1f1f1f; border-radius: 999px; background: transparent; color: #1f1f1f; font-size: 12px; letter-spacing: 0.02em; line-height: 1.5; outline: none; min-width: 220px;">
+            <input data-pw-input="" type="password" value="{{ pwValue }}" onChange="{{ onPwChange }}" onKeyDown="{{ onPwKey }}" placeholder="PASSWORD" aria-label="Password" style="font-family: 'IBM Plex Mono', ui-monospace, monospace; height: 48px; padding: 0 20px; border: 1px solid #1f1f1f; border-radius: 999px; background: transparent; color: #1f1f1f; font-size: 12px; letter-spacing: 0.02em; line-height: 1.5; outline: none; min-width: 220px;">
             <button onClick="{{ onPwSubmit }}" style="font-family: 'IBM Plex Mono', ui-monospace, monospace; display: inline-flex; align-items: center; height: 48px; padding: 0 24px; border: none; border-radius: 999px; background: #1f1f1f; color: #ffffff; font-size: 12px; letter-spacing: 0.02em; text-transform: uppercase; line-height: 1.5; cursor: pointer;">Enter</button>
           </div>
           <sc-if value="{{ pwError }}" hint-placeholder-val="{{ false }}">
@@ -456,7 +461,7 @@ window.__resources = {
       <section style="background: #F1F1FF; color: #1f1f1f; padding: 96px var(--pad); box-sizing: border-box; min-height: calc(100vh - 32px); display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative;">
         <div style="max-width: 1100px; margin: 0 auto; width: 100%;">
           <p style="margin: 0; font-size: var(--display); line-height: 1.05; letter-spacing: -0.05em; text-align: center; text-wrap: pretty;">How I <span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-weight: 400; font-style: italic; letter-spacing: -0.09em;">designed</span> a reusable pricing component for FICO's design system, cutting content update time by 60-70% and unblocking SEO tracking.</p>
-          <div style="height: 1px; background: #d0d6da; width: 100%; margin: 96px 0 0;"></div>
+          <div style="height: 1px; background: #d0d6da; width: 100%; margin: 64px 0 0;"></div>
           <div data-stats-row="" data-stats-center="" style="display: flex; justify-content: space-between; align-items: flex-start; gap: 32px; padding-top: 32px; width: 100%; text-align: left;">
             <sc-for list="{{ pricingMeta }}" as="m" hint-placeholder-count="4">
               <div style="display: flex; flex-direction: column; gap: 8px; min-width: 0; overflow-wrap: anywhere;">
@@ -499,8 +504,8 @@ window.__resources = {
           </div>
         </div>
         <div data-reveal="" style="margin: 48px 0;">
-          <div data-reveal="" data-figure-row="" style="display: grid; grid-template-columns: 70% 1fr; gap: 32px; align-items: start;">
-            <video src="uploads/portfolio_clip_8.mp4" autoplay="{{ true }}" loop="{{ true }}" muted="{{ true }}" playsinline="{{ true }}" style="display: block; width: 100%; height: auto; border-radius: 6px; border: 0.5px solid #d0d6da; background: #f2f1ef;"></video>
+          <div data-reveal="" data-figure-row="" style="display: grid; grid-template-columns: 70% 1fr; gap: 32px; align-items: start; margin: 48px 0;">
+            <video src="uploads/portfolio_clip_8.mp4" autoplay="{{ true }}" loop="{{ true }}" muted="{{ true }}" playsinline="{{ true }}" style="display: block; width: 100%; height: auto; border-radius: 6px; border: 0.5px solid #d0d6da; background: #f2f1ef;" disablePictureInPicture="{{ true }}" controlsList="nodownload noplaybackrate"></video>
             <p style="margin: 0; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; line-height: 1.5; letter-spacing: 0; text-align: left; color: #FE4EDC;">Figma's responsive layout showing columns collapsing into accordions on mobile</p>
           </div>
         <p data-reveal="" style="margin: 0; font-size: clamp(16px, 1.5vw, 20px); line-height: 1.7; letter-spacing: -0.02em; text-wrap: pretty;">Common patterns I observed:</p>
@@ -802,6 +807,10 @@ class Component extends DCLogic {
       v.loop = true;
       v.muted = true;
       v.defaultMuted = true;
+      v.controls = false;
+      v.removeAttribute('controls');
+      v.setAttribute('playsinline', '');
+      v.setAttribute('webkit-playsinline', '');
       v.setAttribute('loop', '');
       v.setAttribute('muted', '');
       if (!v.dataset.loopBound) {
@@ -839,9 +848,24 @@ class Component extends DCLogic {
     this._armedOnce = false;
     if (this._teardownReveal) { this._teardownReveal(); this._teardownReveal = null; }
     if (this.reduced()) { this.setState({ overlay: null, overlayIn: false, closing: false }); return; }
-    this.setState({ closing: true });
     clearTimeout(this._closeT);
-    this._closeT = setTimeout(() => this.setState({ overlay: null, overlayIn: false, closing: false }), 420);
+    const sheet = document.querySelector('[data-overlay-scroll]');
+    const done = () => {
+      clearTimeout(this._closeT);
+      if (sheet) sheet.removeEventListener('animationend', onEnd);
+      this.setState({ overlay: null, overlayIn: false, closing: false });
+    };
+    const onEnd = (e) => { if (e.target === sheet && e.animationName === 'sheet-out') done(); };
+    if (sheet) sheet.addEventListener('animationend', onEnd);
+    const dim = document.querySelector('[data-overlay-dim]');
+    const under = sheet && sheet.previousElementSibling;
+    [sheet, under].forEach((el) => {
+      if (el) { el.style.transition = 'none'; el.style.animation = 'sheet-out 400ms ease-in both'; }
+    });
+    if (dim) { dim.style.transition = 'none'; dim.style.animation = 'dim-out 400ms ease-in both'; }
+    this.setState({ closing: true });
+    // fallback only if animationend is missed (remount, interrupted animation)
+    this._closeT = setTimeout(done, 900);
   }
 
   tabStyle(active) {
@@ -895,7 +919,7 @@ class Component extends DCLogic {
         opacity: 1,
         pointerEvents: 'none',
         ...(closing
-          ? { animation: 'none', opacity: 0, transition: r ? 'none' : 'opacity 400ms ease-in' }
+          ? { animation: r ? 'none' : 'dim-out 400ms ease-in both', transition: 'none' }
           : { animation: r ? 'none' : 'dim-in 500ms ease-out both' })
       },
       sheetUnderlayStyle: {
@@ -910,7 +934,7 @@ class Component extends DCLogic {
         borderTopRightRadius: '16px',
         pointerEvents: 'none',
         ...(closing
-          ? { animation: 'none', transform: 'translateY(100%)', transition: r ? 'none' : 'transform 400ms ease-in' }
+          ? { animation: r ? 'none' : 'sheet-out 400ms ease-in both', transition: 'none' }
           : { animation: r ? 'none' : 'sheet-in 500ms ease-out both' })
       },
       sheetStyle: {
@@ -930,7 +954,7 @@ class Component extends DCLogic {
         overscrollBehavior: 'none',
         WebkitOverflowScrolling: 'touch',
         ...(closing
-          ? { animation: 'none', transform: 'translateY(100%)', transition: r ? 'none' : 'transform 400ms ease-in' }
+          ? { animation: r ? 'none' : 'sheet-out 400ms ease-in both', transition: 'none' }
           : { animation: r ? 'none' : 'sheet-in 500ms ease-out both' })
       }
     };
@@ -967,7 +991,7 @@ class Component extends DCLogic {
         padding: '14px var(--pad)',
         background: 'transparent'
       },
-      ...this.sheetStyles(!!this.state.overlayIn, !!this.state.closing),
+      ...this.sheetStyles(!!this.state.overlayIn, this.state.closing),
       nameEnter: enter,
       nameLeave: () => this.setState((s) => (s.portrait ? { portrait: { ...s.portrait, on: false } } : null)),
       hoverCapable: hoverCapable,
