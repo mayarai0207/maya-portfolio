@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Maya Rai</title>
-<meta name="description" content="Senior UX Designer at FICO, building and scaling our design system across 7+ digital properties and owning event design infrastructure for internal and external events.">
-<link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>
@@ -24,14 +21,14 @@ window.__resources = {
 </template>
 <x-dc>
 <helmet>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;1,400&amp;display=swap" rel="stylesheet">
+<link href="./vendor/fonts.css" rel="stylesheet">
 <style>
   :root { --display: 64px; --pad: 32px; }
   @media (max-width: 1200px) { :root { --display: 60px; --pad: 48px; } }
   @media (max-width: 900px) { :root { --display: 48px; --pad: 40px; } }
   @media (max-width: 600px) { :root { --display: 36px; --pad: 24px; } }
+  @media (max-width: 900px) { [data-finding-row], [data-figure-row] { grid-template-columns: 1fr !important; gap: 8px !important; } }
+  /* below ~600px tall the 32px floor can't coexist with the pill clearance + footer stack */
   body { margin: 0; background: #ffffff; color: #1f1f1f; -webkit-font-smoothing: antialiased; }
   @media (max-width: 900px) { [data-stats-row] { display: flex !important; flex-direction: column !important; align-items: center !important; gap: 32px !important; text-align: center !important; } [data-stats-center] { display: flex !important; flex-direction: column !important; align-items: center !important; gap: 32px !important; text-align: center !important; } }
   @media (min-width: 1800px) { [data-overlay-scroll] { font-size: 100%; } }
@@ -59,6 +56,9 @@ window.__resources = {
   @media (max-width: 900px) { [data-maya] { animation: none !important; opacity: 1 !important; } }
   [data-work-list] > div:last-of-type { margin-bottom: 0 !important; }
   @media (max-width: 900px) { [data-pw-input] { font-size: 16px !important; height: 52px !important; padding: 0 22px !important; } }
+  @media (max-width: 900px) { [data-footer-wrap] { padding-bottom: 72px !important; } }
+  [data-work-tile]:hover [data-work-thumb] { transform: scale(1.05); }
+  @media (max-width: 900px) { [data-work-list] { gap: 64px !important; } [data-work-tile] { flex-direction: column !important; align-items: stretch !important; gap: 24px !important; } [data-work-tile] > [data-work-thumb-frame] { flex: 0 0 auto !important; } }
   @keyframes maya-breath { 0%, 100% { opacity: 1; } 50% { opacity: 0.55; } }
   h1, h2, h3, h4 { font-weight: 400; }
   a { color: inherit; text-decoration: none; }
@@ -111,19 +111,19 @@ window.__resources = {
   </sc-if>
 
   <sc-if value="{{ isWork }}" hint-placeholder-val="{{ false }}">
-    <div data-work-list="" style="max-width: 1100px; margin: 0 auto; padding: 170px var(--pad) 64px;">
+    <div data-work-list="" style="max-width: 1100px; margin: 0 auto; padding: 170px var(--pad) 64px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 72px;">
       <sc-for list="{{ projects }}" as="p" hint-placeholder-count="4">
-        <div style="margin-bottom: 96px;">
-          <a href="{{ p.href }}" target="{{ p.target }}" rel="{{ p.rel }}" onClick="{{ p.onClick }}" style="{{ p.rowStyle }}">
-            <span style="display: inline-block; min-width: 1.5em;">{{ p.num }}</span>{{ p.title }}
-          </a>
-          <div style="{{ p.inlineThumbStyle }}"></div>
-        </div>
+        <a data-work-tile="" href="{{ p.href }}" target="{{ p.target }}" rel="{{ p.rel }}" onClick="{{ p.onClick }}" style="{{ p.tileStyle }}">
+          <span data-work-thumb-frame="" style="display: block; flex: 0 0 50%; overflow: hidden; border-radius: 6px; border: 1px solid #d0d6da;">
+            <span data-work-thumb="" style="{{ p.tileThumbStyle }}"></span>
+          </span>
+          <span style="{{ p.tileTitleStyle }}"><span style="display: inline-block; min-width: 1.5em;">{{ p.num }}</span>{{ p.title }}</span>
+        </a>
       </sc-for>
     </div>
   </sc-if>
 
-  <div style="max-width: 1100px; margin: 0 auto; padding: 0 var(--pad) 96px;">
+  <div data-footer-wrap="" style="max-width: 1100px; margin: 0 auto; padding: 0 var(--pad) 96px;">
     <div style="height: 1px; background: #d0d6da; width: 100%;"></div>
     <div data-footer-row="" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); justify-items: start; gap: 32px; padding-top: 32px;">
       <div style="display: flex; flex-direction: column; gap: 8px;">
@@ -137,10 +137,10 @@ window.__resources = {
     </div>
   </div>
 
-  <div data-pinned-wrap="" style="position: fixed; left: 0; right: 0; bottom: 0; z-index: 30;">
+  <div data-pinned-wrap="" style="position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; pointer-events: none;">
   <div data-pinned-links="" style="{{ pinnedStyle }}">
     <span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.02em; text-transform: uppercase; line-height: 1.5; color: #1f1f1f;">Last updated: 30 - 07 - 2026</span>
-    <span style="display: flex; gap: 32px;">
+    <span style="display: flex; gap: 32px; pointer-events: auto;">
       <a href="https://drive.google.com/file/d/1_W1uiU0iS-QZjMz1Y_wXHbp0jJS0E5qL/view" target="_blank" rel="noopener noreferrer" style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.02em; text-transform: uppercase; line-height: 1.5; color: #1f1f1f; transition: color 200ms ease;" style-hover="color: #878B8E;">Resume</a>
       <a href="https://www.linkedin.com/in/maya-rai-0207/" target="_blank" rel="noopener noreferrer" style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.02em; text-transform: uppercase; line-height: 1.5; color: #1f1f1f; transition: color 200ms ease;" style-hover="color: #878B8E;">LinkedIn</a>
     </span>
@@ -196,7 +196,7 @@ window.__resources = {
         </div>
       </section>
       </sc-if>
-      <sc-if value="{{ isShippedUnlocked }}" hint-placeholder-val="{{ true }}">
+      <sc-if value="{{ isShippedUnlocked }}" hint-placeholder-val="{{ false }}">
       <section style="background: #DEF6FB; color: #1f1f1f; padding: 96px var(--pad); box-sizing: border-box; min-height: calc(100vh - 32px); display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative;">
         <div style="max-width: 1100px; margin: 0 auto; width: 100%;">
           <p style="margin: 0; font-size: var(--display); line-height: 1.05; letter-spacing: -0.05em; text-align: center; text-wrap: pretty;">A collection of pages and experiences I <span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-weight: 400; font-style: italic; letter-spacing: -0.06em;">designed</span> and <span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-weight: 400; font-style: italic; letter-spacing: -0.06em;">launched</span> across FICO's digital properties.</p>
@@ -265,7 +265,7 @@ window.__resources = {
         </div>
       </section>
       </sc-if>
-      <sc-if value="{{ isDsUnlocked }}" hint-placeholder-val="{{ true }}">
+      <sc-if value="{{ isDsUnlocked }}" hint-placeholder-val="{{ false }}">
       <section style="background: #EAEEFE; color: #1f1f1f; padding: 96px var(--pad); box-sizing: border-box; min-height: calc(100vh - 32px); display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative;">
         <div style="max-width: 1100px; margin: 0 auto; width: 100%;">
           <p style="margin: 0; font-size: var(--display); line-height: 1.05; letter-spacing: -0.05em; text-align: center; text-wrap: pretty;">How I <span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-weight: 400; font-style: italic; letter-spacing: -0.09em;">rebuilt</span> FICO's design system from 200 to 400 components, cutting page-building time by 60% across 7+ digital properties.</p>
@@ -460,7 +460,7 @@ window.__resources = {
         </div>
       </section>
       </sc-if>
-      <sc-if value="{{ isPricingUnlocked }}" hint-placeholder-val="{{ true }}">
+      <sc-if value="{{ isPricingUnlocked }}" hint-placeholder-val="{{ false }}">
       <section style="background: #F1F1FF; color: #1f1f1f; padding: 96px var(--pad); box-sizing: border-box; min-height: calc(100vh - 32px); display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative;">
         <div style="max-width: 1100px; margin: 0 auto; width: 100%;">
           <p style="margin: 0; font-size: var(--display); line-height: 1.05; letter-spacing: -0.05em; text-align: center; text-wrap: pretty;">How I <span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-weight: 400; font-style: italic; letter-spacing: -0.09em;">designed</span> a reusable pricing component for FICO's design system, cutting content update time by 60-70% and unblocking SEO tracking.</p>
@@ -1003,7 +1003,8 @@ class Component extends DCLogic {
         alignItems: 'center',
         gap: '32px',
         padding: '14px var(--pad)',
-        background: 'transparent'
+        background: 'transparent',
+        pointerEvents: 'none'
       },
       ...this.sheetStyles(!!this.state.overlayIn, this.state.closing),
       nameEnter: enter,
@@ -1016,9 +1017,9 @@ class Component extends DCLogic {
           zIndex: 40,
           pointerEvents: 'none',
           ...[
-            { top: '16vh', right: 'max(var(--pad), 5vw)' },
-            { bottom: '18vh', right: 'max(var(--pad), 10vw)' },
-            { top: '38vh', left: 'max(var(--pad), 4vw)' }
+            { top: '16vh', right: 'max(var(--pad), calc(50vw - 670px))' },
+            { bottom: '18vh', right: 'max(var(--pad), calc(50vw - 610px))' },
+            { top: '38vh', left: 'max(var(--pad), calc(50vw - 670px))' }
           ][portrait && portrait.pos ? portrait.pos % 3 : 0],
           opacity: on ? 1 : 0,
           visibility: on ? 'visible' : 'hidden',
@@ -1033,6 +1034,36 @@ class Component extends DCLogic {
         target: p.external ? '_blank' : undefined,
         rel: p.external ? 'noopener noreferrer' : undefined,
         onClick: p.external ? undefined : (p.hasOverlay ? this.open(p) : (e) => e.preventDefault()),
+        tileStyle: {
+          display: 'flex',
+          flexDirection: 'row',
+          alignItems: 'center',
+          gap: '40px',
+          cursor: p.external || p.hasOverlay ? 'pointer' : 'default',
+          color: '#1f1f1f',
+          textDecoration: 'none'
+        },
+        tileThumbStyle: {
+          display: 'block',
+          width: '100%',
+          aspectRatio: '2 / 1',
+          backgroundColor: '#ffffff',
+          backgroundImage: p.thumb ? 'url("' + p.thumb + '")' : 'repeating-linear-gradient(135deg, #eae8e4 0 10px, #f2f1ef 10px 20px)',
+          backgroundSize: p.thumb ? 'cover' : 'auto',
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'center',
+          transition: 'transform 500ms cubic-bezier(0.22, 0.61, 0.36, 1)'
+        },
+        tileTitleStyle: {
+          display: 'block',
+          flex: '1 1 auto',
+          minWidth: 0,
+          fontSize: 'clamp(20px, 2.4vw, 32px)',
+          lineHeight: 1.2,
+          letterSpacing: '-0.03em',
+          color: '#1f1f1f',
+          textWrap: 'pretty'
+        },
         inlineThumbStyle: {
           width: '100%',
           maxWidth: '520px',
