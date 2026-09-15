@@ -58,6 +58,10 @@ window.__resources = {
   @media (max-width: 900px) { [data-pw-input] { font-size: 16px !important; height: 52px !important; padding: 0 22px !important; } }
   @media (max-width: 900px) { [data-footer-wrap] { padding-bottom: 72px !important; } }
   [data-work-tile]:hover [data-work-thumb] { transform: scale(1.05); }
+  @media (max-width: 600px) {
+    [data-work-tile]:hover [data-work-thumb] { transform: none !important; }
+    [data-pinned-wrap] { padding-top: 40px; background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.85) 45%, #ffffff 100%); }
+  }
   @media (max-width: 900px) { [data-work-list] { gap: 64px !important; } [data-work-tile] { flex-direction: column !important; align-items: stretch !important; gap: 24px !important; } [data-work-tile] > [data-work-thumb-frame] { flex: 0 0 auto !important; } }
   @keyframes maya-breath { 0%, 100% { opacity: 1; } 50% { opacity: 0.55; } }
   h1, h2, h3, h4 { font-weight: 400; }
@@ -1017,9 +1021,9 @@ class Component extends DCLogic {
           zIndex: 40,
           pointerEvents: 'none',
           ...[
-            { top: '16vh', right: 'max(var(--pad), calc(50vw - 670px))' },
-            { bottom: '18vh', right: 'max(var(--pad), calc(50vw - 610px))' },
-            { top: '38vh', left: 'max(var(--pad), calc(50vw - 670px))' }
+            { top: '16vh', right: 'max(var(--pad), 5vw)' },
+            { bottom: '18vh', right: 'max(var(--pad), 10vw)' },
+            { top: '38vh', left: 'max(var(--pad), 4vw)' }
           ][portrait && portrait.pos ? portrait.pos % 3 : 0],
           opacity: on ? 1 : 0,
           visibility: on ? 'visible' : 'hidden',
@@ -1064,34 +1068,7 @@ class Component extends DCLogic {
           color: '#1f1f1f',
           textWrap: 'pretty'
         },
-        inlineThumbStyle: {
-          width: '100%',
-          maxWidth: '520px',
-          aspectRatio: (this._ratios && this._ratios[p.id]) || '3 / 2',
-          marginTop: '24px',
-          border: '1px solid #d0d6da',
-          borderRadius: '6px',
-          boxSizing: 'border-box',
-          backgroundColor: '#ffffff',
-          backgroundImage: p.thumb ? 'url("' + p.thumb + '")' : 'repeating-linear-gradient(135deg, #eae8e4 0 10px, #f2f1ef 10px 20px)',
-          backgroundSize: p.thumb ? 'contain' : 'auto',
-          backgroundRepeat: 'no-repeat',
-          backgroundPosition: 'center'
-        },
-        rowStyle: {
-          display: 'block',
-          fontSize: 'var(--display)',
-          lineHeight: 1.05,
-          letterSpacing: '-0.05em',
-          cursor: p.external || p.hasOverlay ? 'pointer' : 'default',
-          color: '#1f1f1f',
-          textWrap: 'pretty'
-        },
-        onEnter: hoverCapable ? () => {
-          this.setState({ row: { i, on: false } });
-          requestAnimationFrame(() => requestAnimationFrame(() => this.setState((s) => (s.row && s.row.i === i ? { row: { ...s.row, on: true } } : null))));
-        } : undefined,
-        onLeave: hoverCapable ? () => this.setState((s) => (s.row && s.row.i === i ? { row: { ...s.row, on: false } } : null)) : undefined
+
       })),
       isWeatherOverlay: !!overlay && overlay.id === 'weather',
       isShippedOverlay: !!overlay && overlay.id === 'shipped',
