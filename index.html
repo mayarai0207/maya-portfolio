@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+<title>About - Maya Rai</title>
+<meta name="description" content="Senior UX Designer at FICO, building and scaling our design system across 7+ digital properties and owning event design infrastructure for internal and external events.">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -58,16 +60,31 @@ window.__resources = {
   [data-work-list] > div:last-of-type { margin-bottom: 0 !important; }
   @media (max-width: 900px) { [data-pw-input] { font-size: 16px !important; height: 52px !important; padding: 0 22px !important; } }
   @media (max-width: 900px) { [data-footer-wrap] { padding-bottom: 72px !important; } }
-  [data-work-tile]:hover [data-work-thumb] { transform: scale(1.05); }
+  @media (hover: hover) and (pointer: fine) { [data-work-tile]:hover [data-work-thumb] { transform: scale(1.05); } }
   @media (max-width: 600px) {
     [data-work-tile]:hover [data-work-thumb] { transform: none !important; }
-    [data-pinned-wrap] { padding-top: 40px; background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.85) 45%, #ffffff 100%); }
+    [data-pinned-wrap] { padding-top: 60px; background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.45) 55%, rgba(255,255,255,0.7) 100%); }
   }
-  @media (max-width: 900px) { [data-work-list] { gap: 64px !important; } [data-work-tile] { flex-direction: column !important; align-items: stretch !important; gap: 24px !important; } [data-work-tile] > [data-work-thumb-frame] { flex: 0 0 auto !important; } }
+  @media (max-width: 900px) { [data-work-list] { gap: 56px !important; } }
+  @media (max-width: 600px) { [data-work-list] { gap: 40px !important; padding-bottom: 64px !important; } [data-about-inner] { padding-bottom: 64px !important; }  [data-work-titleblock] { flex: 1 1 100% !important; } [data-work-title] { white-space: normal !important; } [data-pill] { padding-left: 24px !important; padding-right: 24px !important; } [data-work-meta] { flex-direction: column !important; align-items: flex-start !important; gap: 24px !important; padding: 24px !important; } }
+  [data-pill-label] { position: relative; display: inline-block; }
+  [data-pill-arrow] { display: none; }
+  @media (hover: hover) and (pointer: fine) {
+    [data-pill] { transition: background-color 200ms ease, color 200ms ease; }
+    [data-pill-label] { transition: transform 200ms ease; }
+    [data-pill-arrow] { display: block; position: absolute; left: calc(100% + 8px); top: 50%; width: 1em; height: 1em; margin-top: -0.5em; opacity: 0; transform: translateX(-8px); transition: opacity 200ms ease, transform 200ms ease; }
+    [data-work-tile]:hover [data-pill], button[data-pill]:hover,
+    [data-work-tile]:focus-visible [data-pill], button[data-pill]:focus-visible { background: #ffffff !important; color: #1f1f1f !important; }
+    [data-work-tile]:hover [data-pill-label], button[data-pill]:hover [data-pill-label],
+    [data-work-tile]:focus-visible [data-pill-label], button[data-pill]:focus-visible [data-pill-label] { transform: translateX(calc(-0.5em - 4px)); }
+    [data-work-tile]:hover [data-pill-arrow], button[data-pill]:hover [data-pill-arrow],
+    [data-work-tile]:focus-visible [data-pill-arrow], button[data-pill]:focus-visible [data-pill-arrow] { opacity: 1; transform: translateX(0); }
+  }
+  @media (hover: hover) and (pointer: fine) { [data-hv1]:hover { color: #878B8E !important; } [data-hv2]:hover { color: #878B8E !important; } [data-hv3]:hover { opacity: 0.85 !important; } }
   @keyframes maya-breath { 0%, 100% { opacity: 1; } 50% { opacity: 0.55; } }
   h1, h2, h3, h4 { font-weight: 400; }
   a { color: inherit; text-decoration: none; }
-  a:hover { color: #1f1f1f; }
+  @media (hover: hover) and (pointer: fine) { a:hover { color: #1f1f1f; } }
 </style>
 <script data-loop-guard="">
 (function () {
@@ -101,7 +118,7 @@ window.__resources = {
 
   <sc-if value="{{ isAbout }}" hint-placeholder-val="{{ true }}">
     <div style="display: flex; flex-direction: column; padding: 170px var(--pad) 0; max-width: 1100px; margin: 0 auto;">
-      <div style="display: flex; flex-direction: column; align-items: center; padding: 0 0 64px; text-align: center;">
+      <div data-about-inner="" style="display: flex; flex-direction: column; align-items: center; padding: 0 0 88px; text-align: center;">
         <p data-about-p1="" style="margin: 0 0 32px; font-size: var(--display); line-height: 1.05; letter-spacing: -0.05em; text-wrap: pretty;">
           Hi, I'm <span data-maya="" onMouseEnter="{{ nameEnter }}" onMouseLeave="{{ nameLeave }}" style="color: #FE4EDC; animation: maya-breath 4s ease-in-out infinite; cursor: default;">Maya</span>!
         </p>
@@ -109,20 +126,26 @@ window.__resources = {
           I'm a <span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-weight: 400; font-style: italic; letter-spacing: -0.09em;">Senior UX Designer</span> at FICO where I lead design system work across 7+ digital properties. I love the challenge of creating consistent, approachable experiences that hold up across many products at once.
         </p>
         <p style="margin: 0; font-size: var(--display); line-height: 1.05; letter-spacing: -0.05em; text-wrap: pretty;">
-          Outside of work, I enjoy talking about fashion history, eating sour candy, and collecting trinkets.
+          Outside of design, I enjoy learning about fashion history, eating sour candy, and collecting trinkets.
         </p>
       </div>
     </div>
   </sc-if>
 
   <sc-if value="{{ isWork }}" hint-placeholder-val="{{ false }}">
-    <div data-work-list="" style="max-width: 1100px; margin: 0 auto; padding: 170px var(--pad) 64px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 72px;">
+    <div data-work-list="" style="max-width: 1100px; margin: 0 auto; padding: 170px var(--pad) 88px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 64px;">
       <sc-for list="{{ projects }}" as="p" hint-placeholder-count="4">
         <a data-work-tile="" href="{{ p.href }}" target="{{ p.target }}" rel="{{ p.rel }}" onClick="{{ p.onClick }}" style="{{ p.tileStyle }}">
-          <span data-work-thumb-frame="" style="display: block; flex: 0 0 50%; overflow: hidden; border-radius: 6px; border: 1px solid #d0d6da;">
+          <span data-work-thumb-frame="" style="display: block; width: 100%; aspect-ratio: 2200 / 1000; overflow: hidden; border-bottom: 1px solid #d0d6da; box-sizing: border-box;">
             <span data-work-thumb="" style="{{ p.tileThumbStyle }}"></span>
           </span>
-          <span style="{{ p.tileTitleStyle }}"><span style="display: inline-block; min-width: 1.5em;">{{ p.num }}</span>{{ p.title }}</span>
+          <span data-work-meta="" style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 24px 32px; padding: 32px 40px 40px;">
+            <span data-work-titleblock="" style="display: block; flex: 0 0 auto; max-width: 100%;">
+              <span style="display: block; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.02em; text-transform: uppercase; line-height: 1.5; color: #1f1f1f;">{{ p.label }}</span>
+              <span data-work-title="" style="{{ p.tileTitleStyle }}">{{ p.title }}</span>
+            </span>
+            <span data-work-cta="" data-pill="" style="display: inline-flex; align-items: center; box-sizing: border-box; height: 44px; padding: 0 36px; border-radius: 999px; border: 1px solid #1f1f1f; background: #1f1f1f; color: #ffffff; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.02em; text-transform: uppercase; line-height: 1.5; white-space: nowrap; flex: 0 0 auto;"><span data-pill-label="">{{ p.ctaLabel }}<svg data-pill-arrow="" aria-hidden="true" viewBox="0 -960 960 960" width="1em" height="1em" fill="currentColor"><path d="m560-240-56-58 142-142H160v-80h486L504-662l56-58 240 240-240 240Z"></path></svg></span></span>
+          </span>
         </a>
       </sc-for>
     </div>
@@ -144,10 +167,10 @@ window.__resources = {
 
   <div data-pinned-wrap="" style="position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; pointer-events: none;">
   <div data-pinned-links="" style="{{ pinnedStyle }}">
-    <span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.02em; text-transform: uppercase; line-height: 1.5; color: #1f1f1f;">Last updated: 30 - 07 - 2026</span>
+    <span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.02em; text-transform: uppercase; line-height: 1.5; color: #1f1f1f;">Last updated: Oct 2026</span>
     <span style="display: flex; gap: 32px; pointer-events: auto;">
-      <a href="https://drive.google.com/file/d/1FS9O4LwqiFueT1IITKSZmk1EIectXXop/view?usp=sharing" target="_blank" rel="noopener noreferrer" style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.02em; text-transform: uppercase; line-height: 1.5; color: #1f1f1f; transition: color 200ms ease;" style-hover="color: #878B8E;">Resume</a>
-      <a href="https://www.linkedin.com/in/maya-rai-0207/" target="_blank" rel="noopener noreferrer" style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.02em; text-transform: uppercase; line-height: 1.5; color: #1f1f1f; transition: color 200ms ease;" style-hover="color: #878B8E;">LinkedIn</a>
+      <a href="https://drive.google.com/file/d/1KvPzS0IMOtrD-srP-mEbk99PGiFs6D-V/view?usp=sharing" target="_blank" rel="noopener noreferrer" style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.02em; text-transform: uppercase; line-height: 1.5; color: #1f1f1f; transition: color 200ms ease;" data-hv1="">Resume</a>
+      <a href="https://www.linkedin.com/in/maya-rai-0207/" target="_blank" rel="noopener noreferrer" style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.02em; text-transform: uppercase; line-height: 1.5; color: #1f1f1f; transition: color 200ms ease;" data-hv2="">LinkedIn</a>
     </span>
   </div>
   </div>
@@ -173,7 +196,7 @@ window.__resources = {
           <p style="margin: 0; font-size: var(--display); line-height: 1.05; letter-spacing: -0.05em; text-align: center; text-wrap: pretty;">A side project that&nbsp;<span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-weight: 400; font-style: italic; letter-spacing: -0.09em;">combines</span>&nbsp;two of my interests: fashion and moodboarding.</p>
           <p style="margin: 32px auto 0; max-width: 900px; text-align: center; font-size: clamp(16px, 1.5vw, 20px); line-height: 1.7; letter-spacing: -0.02em; text-wrap: pretty;">Type in any city and get an archival runway look matched to the weather outside. It was a fun exercise digging through runway archives and hand-selecting looks based on texture, color, and silhouette. Designed, coded, and deployed with Claude Code, vanilla JS, and the Open-Meteo API.</p>
           <div style="display: flex; justify-content: center; margin-top: 48px;">
-            <a href="https://weather-fashion.vercel.app" target="_blank" rel="noopener noreferrer" style="font-family: 'IBM Plex Mono', ui-monospace, monospace; display: inline-flex; align-items: center; height: 48px; padding: 0 24px; border-radius: 999px; background: #ffffff; color: #1f1f1f; font-size: 12px; font-weight: 400; letter-spacing: 0.02em; text-transform: uppercase; line-height: 1.5; cursor: pointer; transition: opacity 200ms ease;" style-hover="opacity: 0.85;">weather-fashion.vercel.app</a>
+            <a href="https://weather-fashion.vercel.app" target="_blank" rel="noopener noreferrer" style="font-family: 'IBM Plex Mono', ui-monospace, monospace; display: inline-flex; align-items: center; height: 48px; padding: 0 24px; border-radius: 999px; background: #ffffff; color: #1f1f1f; font-size: 12px; font-weight: 400; letter-spacing: 0.02em; text-transform: uppercase; line-height: 1.5; cursor: pointer; transition: opacity 200ms ease;" data-hv3="">weather-fashion.vercel.app</a>
           </div>
         </div>
       </section>
@@ -193,7 +216,7 @@ window.__resources = {
           <p style="margin: 0 0 48px; font-size: clamp(16px, 1.5vw, 20px); line-height: 1.7; letter-spacing: -0.02em; text-wrap: pretty;">This work is password protected</p>
           <div style="display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; align-items: center;">
             <input data-pw-input="" type="password" value="{{ pwValue }}" onChange="{{ onPwChange }}" onKeyDown="{{ onPwKey }}" placeholder="PASSWORD" aria-label="Password" style="font-family: 'IBM Plex Mono', ui-monospace, monospace; height: 48px; padding: 0 20px; border: 1px solid #1f1f1f; border-radius: 999px; background: transparent; color: #1f1f1f; font-size: 12px; letter-spacing: 0.02em; line-height: 1.5; outline: none; min-width: 220px;">
-            <button onClick="{{ onPwSubmit }}" style="font-family: 'IBM Plex Mono', ui-monospace, monospace; display: inline-flex; align-items: center; height: 48px; padding: 0 24px; border: none; border-radius: 999px; background: #1f1f1f; color: #ffffff; font-size: 12px; letter-spacing: 0.02em; text-transform: uppercase; line-height: 1.5; cursor: pointer;">Enter</button>
+            <button data-pill="" onClick="{{ onPwSubmit }}" style="font-family: 'IBM Plex Mono', ui-monospace, monospace; display: inline-flex; align-items: center; height: 48px; padding: 0 36px; border: 1px solid #1f1f1f; box-sizing: border-box; border-radius: 999px; background: #1f1f1f; color: #ffffff; font-size: 12px; letter-spacing: 0.02em; text-transform: uppercase; line-height: 1.5; cursor: pointer;"><span data-pill-label="">Enter<svg data-pill-arrow="" aria-hidden="true" viewBox="0 -960 960 960" width="1em" height="1em" fill="currentColor"><path d="m560-240-56-58 142-142H160v-80h486L504-662l56-58 240 240-240 240Z"></path></svg></span></button>
           </div>
           <sc-if value="{{ pwError }}" hint-placeholder-val="{{ false }}">
             <p style="margin: 24px 0 0; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.02em; text-transform: uppercase; line-height: 1.5; color: #1f1f1f;">Incorrect password</p>
@@ -262,7 +285,7 @@ window.__resources = {
           <p style="margin: 0 0 48px; font-size: clamp(16px, 1.5vw, 20px); line-height: 1.7; letter-spacing: -0.02em; text-wrap: pretty;">This work is password protected</p>
           <div style="display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; align-items: center;">
             <input data-pw-input="" type="password" value="{{ pwValue }}" onChange="{{ onPwChange }}" onKeyDown="{{ onPwKey }}" placeholder="PASSWORD" aria-label="Password" style="font-family: 'IBM Plex Mono', ui-monospace, monospace; height: 48px; padding: 0 20px; border: 1px solid #1f1f1f; border-radius: 999px; background: transparent; color: #1f1f1f; font-size: 12px; letter-spacing: 0.02em; line-height: 1.5; outline: none; min-width: 220px;">
-            <button onClick="{{ onPwSubmit }}" style="font-family: 'IBM Plex Mono', ui-monospace, monospace; display: inline-flex; align-items: center; height: 48px; padding: 0 24px; border: none; border-radius: 999px; background: #1f1f1f; color: #ffffff; font-size: 12px; letter-spacing: 0.02em; text-transform: uppercase; line-height: 1.5; cursor: pointer;">Enter</button>
+            <button data-pill="" onClick="{{ onPwSubmit }}" style="font-family: 'IBM Plex Mono', ui-monospace, monospace; display: inline-flex; align-items: center; height: 48px; padding: 0 36px; border: 1px solid #1f1f1f; box-sizing: border-box; border-radius: 999px; background: #1f1f1f; color: #ffffff; font-size: 12px; letter-spacing: 0.02em; text-transform: uppercase; line-height: 1.5; cursor: pointer;"><span data-pill-label="">Enter<svg data-pill-arrow="" aria-hidden="true" viewBox="0 -960 960 960" width="1em" height="1em" fill="currentColor"><path d="m560-240-56-58 142-142H160v-80h486L504-662l56-58 240 240-240 240Z"></path></svg></span></button>
           </div>
           <sc-if value="{{ pwError }}" hint-placeholder-val="{{ false }}">
             <p style="margin: 24px 0 0; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.02em; text-transform: uppercase; line-height: 1.5; color: #1f1f1f;">Incorrect password</p>
@@ -457,7 +480,7 @@ window.__resources = {
           <p style="margin: 0 0 48px; font-size: clamp(16px, 1.5vw, 20px); line-height: 1.7; letter-spacing: -0.02em; text-wrap: pretty;">This work is password protected</p>
           <div style="display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; align-items: center;">
             <input data-pw-input="" type="password" value="{{ pwValue }}" onChange="{{ onPwChange }}" onKeyDown="{{ onPwKey }}" placeholder="PASSWORD" aria-label="Password" style="font-family: 'IBM Plex Mono', ui-monospace, monospace; height: 48px; padding: 0 20px; border: 1px solid #1f1f1f; border-radius: 999px; background: transparent; color: #1f1f1f; font-size: 12px; letter-spacing: 0.02em; line-height: 1.5; outline: none; min-width: 220px;">
-            <button onClick="{{ onPwSubmit }}" style="font-family: 'IBM Plex Mono', ui-monospace, monospace; display: inline-flex; align-items: center; height: 48px; padding: 0 24px; border: none; border-radius: 999px; background: #1f1f1f; color: #ffffff; font-size: 12px; letter-spacing: 0.02em; text-transform: uppercase; line-height: 1.5; cursor: pointer;">Enter</button>
+            <button data-pill="" onClick="{{ onPwSubmit }}" style="font-family: 'IBM Plex Mono', ui-monospace, monospace; display: inline-flex; align-items: center; height: 48px; padding: 0 36px; border: 1px solid #1f1f1f; box-sizing: border-box; border-radius: 999px; background: #1f1f1f; color: #ffffff; font-size: 12px; letter-spacing: 0.02em; text-transform: uppercase; line-height: 1.5; cursor: pointer;"><span data-pill-label="">Enter<svg data-pill-arrow="" aria-hidden="true" viewBox="0 -960 960 960" width="1em" height="1em" fill="currentColor"><path d="m560-240-56-58 142-142H160v-80h486L504-662l56-58 240 240-240 240Z"></path></svg></span></button>
           </div>
           <sc-if value="{{ pwError }}" hint-placeholder-val="{{ false }}">
             <p style="margin: 24px 0 0; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.02em; text-transform: uppercase; line-height: 1.5; color: #1f1f1f;">Incorrect password</p>
@@ -588,16 +611,17 @@ window.__resources = {
 const PROJECTS = [
   {
     id: 'weather',
-    hasOverlay: true,
-    thumb: 'uploads/Thumbnail-4.png',
-    title: 'A weather site that matches the forecast to archival runway looks',
+    external: true,
+    href: 'https://weather-fashion.vercel.app',
+    thumb: 'uploads/thumb-weather.png',
+    title: 'Matching forecasts to runway looks',
     desc: 'Placeholder description line one, two sentences about the concept. Placeholder description line two about the build and what it taught me.',
     slot: 'project thumbnail — 3:2'
   },
   {
     id: 'ds',
     hasOverlay: true,
-    thumb: 'uploads/Thumbnail-3.png',
+    thumb: 'uploads/thumb-ds.png',
     title: 'Rebuilding design systems at FICO',
     desc: 'Placeholder description line one about consolidating three component libraries. Placeholder description line two about adoption and governance.',
     slot: 'project thumbnail — 3:2',
@@ -606,7 +630,7 @@ const PROJECTS = [
   {
     id: 'shipped',
     hasOverlay: true,
-    thumb: 'uploads/Thumbnail-5.png',
+    thumb: 'uploads/thumb-shipped.png',
     title: 'Shipped work at FICO',
     desc: 'Placeholder description line one covering a range of shipped surfaces. Placeholder description line two on measurement and iteration.',
     slot: 'project thumbnail — 3:2',
@@ -615,7 +639,7 @@ const PROJECTS = [
   {
     id: 'pricing',
     hasOverlay: true,
-    thumb: 'uploads/Thumbnail-2.png',
+    thumb: 'uploads/thumb-pricing.png',
     title: 'Designing a pricing comparison layout',
     desc: 'Placeholder description line one about comparing five plans without a wall of checkmarks. Placeholder description line two on testing.',
     slot: 'project thumbnail — 3:2',
@@ -671,6 +695,7 @@ class Component extends DCLogic {
   componentDidMount() {
     this._onResize = () => this.forceUpdate();
     window.addEventListener('resize', this._onResize);
+    this.syncTitle();
     this.measureThumbs();
     this._videoTimer = setInterval(() => this.primeVideos(), 1000);
     this.primeVideos();
@@ -753,8 +778,13 @@ class Component extends DCLogic {
     setTimeout(go, 0);
   }
 
+  syncTitle() {
+    document.title = (this.state.view === 'work' ? 'Work' : 'About') + ' - Maya Rai';
+  }
+
   componentDidUpdate(prevProps, prevStateArg) {
     const prevState = prevStateArg || {};
+    if (prevState.view !== this.state.view) this.syncTitle();
 
     if (!prevState.overlay && this.state.overlay && !this.state.overlayIn && !this.reduced()) {
       clearTimeout(this._openT);
@@ -1039,11 +1069,13 @@ class Component extends DCLogic {
         target: p.external ? '_blank' : undefined,
         rel: p.external ? 'noopener noreferrer' : undefined,
         onClick: p.external ? undefined : (p.hasOverlay ? this.open(p) : (e) => e.preventDefault()),
+        ctaLabel: ({ weather: 'Visit site', ds: 'Read case study', shipped: 'View projects', pricing: 'Read case study' })[p.id] || 'View project',
+        label: ({ weather: 'Personal project', ds: 'Case study: design systems', shipped: 'Project collection', pricing: 'Case study: component design' })[p.id] || '',
         tileStyle: {
-          display: 'flex',
-          flexDirection: 'row',
-          alignItems: 'center',
-          gap: '40px',
+          display: 'block',
+          overflow: 'hidden',
+          border: '1px solid #d0d6da',
+          borderRadius: '12px',
           cursor: p.external || p.hasOverlay ? 'pointer' : 'default',
           color: '#1f1f1f',
           textDecoration: 'none'
@@ -1051,8 +1083,7 @@ class Component extends DCLogic {
         tileThumbStyle: {
           display: 'block',
           width: '100%',
-          aspectRatio: '2 / 1',
-          backgroundColor: '#ffffff',
+          height: '100%',
           backgroundImage: p.thumb ? 'url("' + p.thumb + '")' : 'repeating-linear-gradient(135deg, #eae8e4 0 10px, #f2f1ef 10px 20px)',
           backgroundSize: p.thumb ? 'cover' : 'auto',
           backgroundRepeat: 'no-repeat',
@@ -1061,13 +1092,12 @@ class Component extends DCLogic {
         },
         tileTitleStyle: {
           display: 'block',
-          flex: '1 1 auto',
-          minWidth: 0,
-          fontSize: 'clamp(20px, 2.4vw, 32px)',
-          lineHeight: 1.2,
-          letterSpacing: '-0.03em',
+          marginTop: '16px',
+          fontSize: 'clamp(24px, 3.4vw, 44px)',
+          lineHeight: 1.1,
+          letterSpacing: '-0.04em',
+          whiteSpace: 'nowrap',
           color: '#1f1f1f',
-          textWrap: 'pretty'
         },
 
       })),
