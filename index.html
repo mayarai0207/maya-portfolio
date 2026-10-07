@@ -66,7 +66,8 @@ window.__resources = {
     [data-pinned-wrap] { padding-top: 60px; background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.45) 55%, rgba(255,255,255,0.7) 100%); }
   }
   @media (max-width: 900px) { [data-work-list] { gap: 56px !important; } }
-  @media (max-width: 600px) { [data-work-list] { gap: 40px !important; padding-bottom: 64px !important; } [data-about-inner] { padding-bottom: 64px !important; }  [data-work-titleblock] { flex: 1 1 100% !important; } [data-work-thumb-frame] { aspect-ratio: 2 / 1 !important; } [data-work-title] { white-space: normal !important; } [data-pill] { padding-left: 24px !important; padding-right: 24px !important; } [data-work-meta] { flex-direction: column !important; align-items: flex-start !important; gap: 24px !important; padding: 24px !important; } }
+  @media (max-width: 600px) { [data-work-list] { gap: 40px !important; padding-bottom: 64px !important; } [data-about-inner] { padding-bottom: 64px !important; } [data-pill] { padding-left: 24px !important; padding-right: 24px !important; } }
+  @media (max-width: 599.98px) { [data-work-titleblock] { flex: 1 1 100% !important; } [data-work-thumb-frame] { aspect-ratio: 2 / 1 !important; } [data-work-title] { white-space: normal !important; } [data-work-meta] { flex-direction: column !important; align-items: flex-start !important; gap: 24px !important; padding: 24px !important; } }
   [data-pill-label] { position: relative; display: inline-block; }
   [data-pill-arrow] { display: none; }
   @media (hover: hover) and (pointer: fine) {
@@ -133,13 +134,13 @@ window.__resources = {
   </sc-if>
 
   <sc-if value="{{ isWork }}" hint-placeholder-val="{{ false }}">
-    <div data-work-list="" style="max-width: 1100px; margin: 0 auto; padding: 170px var(--pad) 88px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 64px;">
+    <div data-work-list="" style="max-width: calc(1040px + 2 * var(--pad)); margin: 0 auto; padding: 170px var(--pad) 88px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 64px;">
       <sc-for list="{{ projects }}" as="p" hint-placeholder-count="4">
         <a data-work-tile="" href="{{ p.href }}" target="{{ p.target }}" rel="{{ p.rel }}" onClick="{{ p.onClick }}" style="{{ p.tileStyle }}">
           <span data-work-thumb-frame="" style="display: block; width: 100%; aspect-ratio: 3 / 1; overflow: hidden; border-bottom: 1px solid #d0d6da; box-sizing: border-box;">
             <span data-work-thumb="" style="{{ p.tileThumbStyle }}"></span>
           </span>
-          <span data-work-meta="" style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 24px 32px; padding: 24px 40px;">
+          <span data-work-meta="" style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 24px 32px; padding: 24px;">
             <span data-work-titleblock="" style="display: block; flex: 0 0 auto; max-width: 100%;">
               <span style="display: block; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.02em; text-transform: uppercase; line-height: 1.5; color: #1f1f1f;">{{ p.label }}</span>
               <span data-work-title="" style="{{ p.tileTitleStyle }}">{{ p.title }}</span>
@@ -621,7 +622,7 @@ const PROJECTS = [
   {
     id: 'ds',
     hasOverlay: true,
-    thumb: 'uploads/thumb-ds-3x1.png',
+    thumb: 'uploads/thumb-ds-fico-selection.png',
     title: 'Rebuilding design systems at FICO',
     desc: 'Placeholder description line one about consolidating three component libraries. Placeholder description line two about adoption and governance.',
     slot: 'project thumbnail — 3:2',
@@ -1073,6 +1074,10 @@ class Component extends DCLogic {
         label: ({ weather: 'Personal project', ds: 'Case study: design systems', shipped: 'Project collection', pricing: 'Case study: component design' })[p.id] || '',
         tileStyle: {
           display: 'block',
+          boxSizing: 'border-box',
+          width: '100%',
+          maxWidth: '1040px',
+          justifySelf: 'center',
           overflow: 'hidden',
           border: '1px solid #d0d6da',
           borderRadius: '12px',
