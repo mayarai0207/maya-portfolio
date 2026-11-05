@@ -67,6 +67,7 @@ window.__resources = {
   }
   @media (max-width: 900px) { [data-work-list] { gap: 56px !important; } }
   @media (max-width: 600px) { [data-work-list] { gap: 40px !important; padding-bottom: 64px !important; } [data-about-inner] { padding-bottom: 64px !important; } [data-pill] { padding-left: 24px !important; padding-right: 24px !important; } }
+  [data-view="about"] [data-footer-wrap] { max-width: none !important; margin: 64px 0 0 !important; padding: 0 !important; } [data-view="about"] [data-about-inner] { padding: 0 !important; }
   @media (max-width: 599.98px) { [data-work-titleblock] { flex: 1 1 100% !important; } [data-work-thumb-frame] { aspect-ratio: 2 / 1 !important; } [data-work-title] { white-space: normal !important; } [data-work-meta] { flex-direction: column !important; align-items: flex-start !important; gap: 24px !important; padding: 24px !important; } }
   [data-pill-label] { position: relative; display: inline-block; }
   [data-pill-arrow] { display: none; }
@@ -117,16 +118,18 @@ window.__resources = {
     </div>
   </div>
 
+  <div data-view-wrap="" style="{{ viewWrapStyle }}">
+  <div data-view="{{ viewName }}" style="{{ viewGroupStyle }}">
   <sc-if value="{{ isAbout }}" hint-placeholder-val="{{ true }}">
-    <div style="display: flex; flex-direction: column; padding: 170px var(--pad) 0; max-width: 1100px; margin: 0 auto;">
-      <div data-about-inner="" style="display: flex; flex-direction: column; align-items: center; padding: 0 0 88px; text-align: center;">
-        <p data-about-p1="" style="margin: 0 0 32px; font-size: var(--display); line-height: 1.05; letter-spacing: -0.05em; text-wrap: pretty;">
+    <div style="display: flex; flex-direction: column;">
+      <div data-about-inner="" style="display: flex; flex-direction: column; align-items: center; padding: 0; text-align: center;">
+        <p data-about-p1="" style="margin: 0 0 32px; font-size: min(var(--display), calc(clamp(24px, 3.4vw, 44px) + max(0px, 100dvh - 900px) * 0.0635)); line-height: 1.1; letter-spacing: -0.04em; text-wrap: pretty;">
           Hi, I'm <span data-maya="" onMouseEnter="{{ nameEnter }}" onMouseLeave="{{ nameLeave }}" style="color: #FE4EDC; animation: maya-breath 4s ease-in-out infinite; cursor: default;">Maya</span>!
         </p>
-        <p data-about-p2="" style="margin: 0 0 32px; font-size: var(--display); line-height: 1.05; letter-spacing: -0.05em; text-wrap: pretty;">
-          I'm a <span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-weight: 400; font-style: italic; letter-spacing: -0.09em;">Senior UX Designer</span> at FICO where I lead design system work across 7+ digital properties. I love the challenge of creating consistent, approachable experiences that hold up across many products at once.
+        <p data-about-p2="" style="margin: 0 0 32px; font-size: min(var(--display), calc(clamp(24px, 3.4vw, 44px) + max(0px, 100dvh - 900px) * 0.0635)); line-height: 1.1; letter-spacing: -0.04em; text-wrap: pretty;">
+          I'm a <span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-weight: 400; font-style: italic; letter-spacing: -0.09em;">Senior UX Designer</span> at FICO. I lead design system work across 7+ digital properties. Currently exploring how AI can help keep systems consistent as teams grow.
         </p>
-        <p style="margin: 0; font-size: var(--display); line-height: 1.05; letter-spacing: -0.05em; text-wrap: pretty;">
+        <p style="margin: 0; font-size: min(var(--display), calc(clamp(24px, 3.4vw, 44px) + max(0px, 100dvh - 900px) * 0.0635)); line-height: 1.1; letter-spacing: -0.04em; text-wrap: pretty;">
           Outside of design, I enjoy learning about fashion history, eating sour candy, and collecting trinkets.
         </p>
       </div>
@@ -165,6 +168,8 @@ window.__resources = {
       </div>
     </div>
   </div>
+  </div>
+  </div>
 
   <div data-pinned-wrap="" style="position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; pointer-events: none;">
   <div data-pinned-links="" style="{{ pinnedStyle }}">
@@ -194,7 +199,7 @@ window.__resources = {
       </div>
       <section style="background: #728198; color: #ffffff; padding: 96px var(--pad); box-sizing: border-box; min-height: calc(100vh - 32px); display: flex; align-items: center; justify-content: center;">
         <div style="max-width: 1100px; margin: 0 auto; width: 100%;">
-          <p style="margin: 0; font-size: var(--display); line-height: 1.05; letter-spacing: -0.05em; text-align: center; text-wrap: pretty;">A side project that&nbsp;<span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-weight: 400; font-style: italic; letter-spacing: -0.09em;">combines</span>&nbsp;two of my interests: fashion and moodboarding.</p>
+          <p style="margin: 0; font-size: min(var(--display), calc(clamp(24px, 3.4vw, 44px) + max(0px, 100dvh - 900px) * 0.0635)); line-height: 1.05; letter-spacing: -0.05em; text-align: center; text-wrap: pretty;">A side project that&nbsp;<span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-weight: 400; font-style: italic; letter-spacing: -0.09em;">combines</span>&nbsp;two of my interests: fashion and moodboarding.</p>
           <p style="margin: 32px auto 0; max-width: 900px; text-align: center; font-size: clamp(16px, 1.5vw, 20px); line-height: 1.7; letter-spacing: -0.02em; text-wrap: pretty;">Type in any city and get an archival runway look matched to the weather outside. It was a fun exercise digging through runway archives and hand-selecting looks based on texture, color, and silhouette. Designed, coded, and deployed with Claude Code, vanilla JS, and the Open-Meteo API.</p>
           <div style="display: flex; justify-content: center; margin-top: 48px;">
             <a href="https://weather-fashion.vercel.app" target="_blank" rel="noopener noreferrer" style="font-family: 'IBM Plex Mono', ui-monospace, monospace; display: inline-flex; align-items: center; height: 48px; padding: 0 24px; border-radius: 999px; background: #ffffff; color: #1f1f1f; font-size: 12px; font-weight: 400; letter-spacing: 0.02em; text-transform: uppercase; line-height: 1.5; cursor: pointer; transition: opacity 200ms ease;" data-hv3="">weather-fashion.vercel.app</a>
@@ -228,7 +233,7 @@ window.__resources = {
       <sc-if value="{{ isShippedUnlocked }}" hint-placeholder-val="{{ false }}">
       <section style="background: #DEF6FB; color: #1f1f1f; padding: 96px var(--pad); box-sizing: border-box; min-height: calc(100vh - 32px); display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative;">
         <div style="max-width: 1100px; margin: 0 auto; width: 100%;">
-          <p style="margin: 0; font-size: var(--display); line-height: 1.05; letter-spacing: -0.05em; text-align: center; text-wrap: pretty;">A collection of pages and experiences I <span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-weight: 400; font-style: italic; letter-spacing: -0.06em;">designed</span> and <span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-weight: 400; font-style: italic; letter-spacing: -0.06em;">launched</span> across FICO's digital properties.</p>
+          <p style="margin: 0; font-size: min(var(--display), calc(clamp(24px, 3.4vw, 44px) + max(0px, 100dvh - 900px) * 0.0635)); line-height: 1.05; letter-spacing: -0.05em; text-align: center; text-wrap: pretty;">A collection of pages and experiences I <span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-weight: 400; font-style: italic; letter-spacing: -0.06em;">designed</span> and <span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-weight: 400; font-style: italic; letter-spacing: -0.06em;">launched</span> across FICO's digital properties.</p>
           <div onClick="{{ scrollToContent }}" style="margin-top: 96px; display: flex; justify-content: center; cursor: pointer; animation: scroll-bob 2.4s ease-in-out infinite;">
             <svg width="36" height="46" viewBox="0 0 43 55" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: block; transform: rotate(180deg);" aria-hidden="true">
                 <path d="M15 2.5H12.5V0H15H17.5V2.5H15ZM17.5 7.5V10V12.5V15V17.5V20V22.5V25H20V22.5V20H22.5H25V17.5H22.5H20V15V12.5V10V7.5V5V2.5H17.5V5V7.5ZM32.5 20V17.5H30H27.5V20H30H32.5ZM25 25H27.5V22.5V20H25V22.5V25ZM40 25V22.5H37.5V25H40ZM40 25V27.5V30V32.5V35V37.5V40V42.5H42.5V40V37.5V35V32.5V30V27.5V25H40ZM37.5 45V47.5V50H40V47.5V45V42.5H37.5V45ZM35 52.5H32.5H30H27.5H25H22.5H20H17.5H15V50H12.5V52.5V55H15H17.5H20H22.5H25H27.5H30H32.5H35H37.5V52.5V50H35V52.5ZM32.5 25H35V22.5H37.5V20H35H32.5V22.5V25ZM10 27.5V30V32.5V35H12.5V32.5V30V27.5V25V22.5V20V17.5V15V12.5V10V7.5V5V2.5H10V5V7.5V10V12.5V15V17.5V20V22.5V25H7.5V27.5H10ZM2.5 25H5H7.5V22.5H5H2.5H0V25V27.5V30H2.5V27.5V25ZM2.5 30V32.5H5V30H2.5ZM7.5 32.5H5V35V37.5H7.5V35V32.5ZM10 40V37.5H7.5V40V42.5V45H10V42.5V40ZM12.5 45H10V47.5V50H12.5V47.5V45Z" fill="#1f1f1f"></path>
@@ -297,7 +302,7 @@ window.__resources = {
       <sc-if value="{{ isDsUnlocked }}" hint-placeholder-val="{{ false }}">
       <section style="background: #EAEEFE; color: #1f1f1f; padding: 96px var(--pad); box-sizing: border-box; min-height: calc(100vh - 32px); display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative;">
         <div style="max-width: 1100px; margin: 0 auto; width: 100%;">
-          <p style="margin: 0; font-size: var(--display); line-height: 1.05; letter-spacing: -0.05em; text-align: center; text-wrap: pretty;">How I <span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-weight: 400; font-style: italic; letter-spacing: -0.09em;">rebuilt</span> FICO's design system from 200 to 400 components, cutting page-building time by 60% across 7+ digital properties.</p>
+          <p style="margin: 0; font-size: min(var(--display), calc(clamp(24px, 3.4vw, 44px) + max(0px, 100dvh - 900px) * 0.0635)); line-height: 1.05; letter-spacing: -0.05em; text-align: center; text-wrap: pretty;">How I <span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-weight: 400; font-style: italic; letter-spacing: -0.09em;">rebuilt</span> FICO's design system from 200 to 400 components, cutting page-building time by 60% across 7+ digital properties.</p>
           <div style="height: 1px; background: #d0d6da; width: 100%; margin: 64px 0 0;"></div>
           <div data-stats-row="" data-stats-center="" style="display: flex; justify-content: space-between; align-items: flex-start; gap: 32px; padding-top: 32px; width: 100%; text-align: left;">
             <sc-for list="{{ dsMeta }}" as="m" hint-placeholder-count="3">
@@ -492,7 +497,7 @@ window.__resources = {
       <sc-if value="{{ isPricingUnlocked }}" hint-placeholder-val="{{ false }}">
       <section style="background: #F1F1FF; color: #1f1f1f; padding: 96px var(--pad); box-sizing: border-box; min-height: calc(100vh - 32px); display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative;">
         <div style="max-width: 1100px; margin: 0 auto; width: 100%;">
-          <p style="margin: 0; font-size: var(--display); line-height: 1.05; letter-spacing: -0.05em; text-align: center; text-wrap: pretty;">How I <span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-weight: 400; font-style: italic; letter-spacing: -0.09em;">designed</span> a reusable pricing component for FICO's design system, cutting content update time by 60-70% and unblocking SEO tracking.</p>
+          <p style="margin: 0; font-size: min(var(--display), calc(clamp(24px, 3.4vw, 44px) + max(0px, 100dvh - 900px) * 0.0635)); line-height: 1.05; letter-spacing: -0.05em; text-align: center; text-wrap: pretty;">How I <span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-weight: 400; font-style: italic; letter-spacing: -0.09em;">designed</span> a reusable pricing component for FICO's design system, cutting content update time by 60-70% and unblocking SEO tracking.</p>
           <div style="height: 1px; background: #d0d6da; width: 100%; margin: 64px 0 0;"></div>
           <div data-stats-row="" data-stats-center="" style="display: flex; justify-content: space-between; align-items: flex-start; gap: 32px; padding-top: 32px; width: 100%; text-align: left;">
             <sc-for list="{{ pricingMeta }}" as="m" hint-placeholder-count="4">
@@ -795,7 +800,13 @@ class Component extends DCLogic {
     const now = this.state.overlay || null;
     this._prevOverlay = now;
     if (!was && now) {
+      this.savedScroll = window.scrollY;
       document.body.style.overflow = 'hidden';
+      document.body.style.position = 'fixed';
+      document.body.style.top = (-this.savedScroll) + 'px';
+      document.body.style.left = '0';
+      document.body.style.right = '0';
+      document.body.style.width = '100%';
       document.documentElement.classList.add('overlay-open');
       document.body.classList.add('overlay-open');
       document.documentElement.style.overscrollBehavior = 'none';
@@ -874,6 +885,11 @@ class Component extends DCLogic {
     document.documentElement.style.overscrollBehavior = '';
     document.body.style.overscrollBehavior = '';
     document.body.style.overflow = '';
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.left = '';
+    document.body.style.right = '';
+    document.body.style.width = '';
     window.scrollTo(0, this.savedScroll);
   }
 
@@ -985,7 +1001,7 @@ class Component extends DCLogic {
         pointerEvents: 'none',
         ...(closing
           ? { animation: r ? 'none' : 'sheet-out 400ms ease-in both', transition: 'none' }
-          : { animation: r ? 'none' : 'sheet-in 500ms ease-out both' })
+          : { animation: r ? 'none' : 'sheet-in 500ms ease-out backwards' })
       },
       sheetStyle: {
         position: 'fixed',
@@ -1001,11 +1017,14 @@ class Component extends DCLogic {
         borderTopLeftRadius: '16px',
         borderTopRightRadius: '16px',
         overflowY: 'auto',
+        overflowX: 'hidden',
         overscrollBehavior: 'none',
+        touchAction: 'pan-y',
+        isolation: 'isolate',
         WebkitOverflowScrolling: 'touch',
         ...(closing
           ? { animation: r ? 'none' : 'sheet-out 400ms ease-in both', transition: 'none' }
-          : { animation: r ? 'none' : 'sheet-in 500ms ease-out both' })
+          : { animation: r ? 'none' : 'sheet-in 500ms ease-out backwards' })
       }
     };
   }
@@ -1028,6 +1047,11 @@ class Component extends DCLogic {
     return {
       isAbout: view === 'about',
       isWork: view === 'work',
+      viewName: view,
+      viewWrapStyle: view === 'about'
+        ? { minHeight: '100dvh', boxSizing: 'border-box', padding: '170px var(--pad) 96px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start' }
+        : { display: 'contents' },
+      viewGroupStyle: view === 'about' ? { maxWidth: '1100px', width: '100%' } : { display: 'contents' },
       showAbout: () => { this.setState({ view: 'about', portrait: null, row: null }); window.scrollTo(0, 0); },
       showWork: () => { this.setState({ view: 'work', portrait: null, row: null }); window.scrollTo(0, 0); },
       aboutTabStyle: this.tabStyle(view === 'about'),
